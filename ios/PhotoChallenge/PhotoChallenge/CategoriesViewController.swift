@@ -15,10 +15,11 @@ class CategoriesViewController: UIViewController , UICollectionViewDelegate , UI
         return .LightContent
     }
     
+    var lastColor = UIColor.clearColor()
     var categories : [Category] = [
         Category(id: "0", name: "Animals", stars: 0, color: UIColor.greenColor().darkerColor()),
-        Category(id: "0", name: "Buildings", stars: 0, color: UIColor.redColor()),
-        Category(id: "0", name: "People", stars: 0, color: UIColor.purpleColor()),
+        Category(id: "0", name: "Places", stars: 0, color: UIColor.purpleColor()),
+        Category(id: "0", name: "People", stars: 0, color: UIColor.orangeColor()),
     ]
     
     @IBOutlet weak var collectionView: UICollectionView!
@@ -29,6 +30,8 @@ class CategoriesViewController: UIViewController , UICollectionViewDelegate , UI
         self.tabBarController?.tabBar.tintColor = UIColor.whiteColor()
         self.tabBarController?.tabBar.barTintColor = categories[0].color
         self.navigationController?.navigationBar.barTintColor = categories[0].color
+        self.collectionView.backgroundColor = categories[0].color
+        lastColor = categories[0].color
 
     }
     
@@ -56,7 +59,7 @@ class CategoriesViewController: UIViewController , UICollectionViewDelegate , UI
     
     func scrollViewDidEndDecelerating(scrollView: UIScrollView) {
         let pos = Int(floor(collectionView.contentOffset.x / (collectionView.contentSize.width-collectionView.frame.width) * CGFloat(categories.count-1)))
-        print("\(scrollView.contentOffset.x) out of \(scrollView.contentSize.width-collectionView.frame.width)")
+        //print("\(scrollView.contentOffset.x) out of \(scrollView.contentSize.width-collectionView.frame.width)")
         //let pos = collectionView.indexPathsForVisibleItems().sort({ $0.row > $1.row}).first
 //        if let cell = self.collectionView.cellForItemAtIndexPath(pos){
 //            let c = categories[collectionView.indexPathForCell(cell)!.row]
@@ -64,10 +67,59 @@ class CategoriesViewController: UIViewController , UICollectionViewDelegate , UI
 //            self.tabBarController?.tabBar.barTintColor = c.color
 //        }
         let c = categories[pos]
+//        UIView.animateWithDuration(1, animations: {
+//            self.navigationController?.navigationBar.barTintColor = c.color
+//            self.tabBarController?.tabBar.barTintColor = c.color
+//            self.collectionView.backgroundColor = c.color
+//        })
+        print("last color is \(pos)")
+        lastColor = c.color
         self.navigationController?.navigationBar.barTintColor = c.color
         self.tabBarController?.tabBar.barTintColor = c.color
-
+        self.collectionView.backgroundColor = c.color
+    }
+    
+    
+    func scrollViewDidScroll(scrollView: UIScrollView) {
+            let percentage = collectionView.contentOffset.x / (collectionView.contentSize.width-collectionView.frame.width)
+            let pos = Int(floor((collectionView.contentOffset.x / self.view.frame.width)))
+            if(pos == categories.count-1){ return }
+            //print("\(pos)-\(pos+1)")
+            let c = categories[pos+1]
+            print((collectionView.contentOffset.x % self.view.frame.width) / (self.view.frame.width))
+            let col = self.fadeFromColor(categories[pos].color, toColor: c.color, withPercentage: (collectionView.contentOffset.x % self.view.frame.width) / (self.view.frame.width))
         
+        
+            self.navigationController?.navigationBar.barTintColor = col
+            self.tabBarController?.tabBar.barTintColor = col
+            self.collectionView.backgroundColor = col
+        
+    }
+    
+    func fadeFromColor(fromColor: UIColor, toColor: UIColor, withPercentage: CGFloat) -> UIColor {
+        
+        var fromRed: CGFloat = 0.0
+        var fromGreen: CGFloat = 0.0
+        var fromBlue: CGFloat = 0.0
+        var fromAlpha: CGFloat = 0.0
+        
+        fromColor.getRed(&fromRed, green: &fromGreen, blue: &fromBlue, alpha: &fromAlpha)
+        
+        var toRed: CGFloat = 0.0
+        var toGreen: CGFloat = 0.0
+        var toBlue: CGFloat = 0.0
+        var toAlpha: CGFloat = 0.0
+        
+        toColor.getRed(&toRed, green: &toGreen, blue: &toBlue, alpha: &toAlpha)
+        
+        //calculate the actual RGBA values of the fade colour
+        var red = (toRed - fromRed) * withPercentage + fromRed;
+        var green = (toGreen - fromGreen) * withPercentage + fromGreen;
+        var blue = (toBlue - fromBlue) * withPercentage + fromBlue;
+        var alpha = (toAlpha - fromAlpha) * withPercentage + fromAlpha;
+        
+        // return the fade colour
+        return UIColor(red: red, green: green, blue: blue, alpha: alpha)
     }
     
     func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAtIndex section: Int) -> UIEdgeInsets {
@@ -79,5 +131,13 @@ class CategoriesViewController: UIViewController , UICollectionViewDelegate , UI
     }
     func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAtIndex section: Int) -> CGFloat {
         return 0
+    }
+}
+
+extension UIColor{
+    func towards(other:UIColor , percentage : Double) -> UIColor{
+        return UIColor(
+            
+        )
     }
 }

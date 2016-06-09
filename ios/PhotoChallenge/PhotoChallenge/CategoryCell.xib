@@ -25,30 +25,6 @@
                     <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="iT7-wd-jf3">
-                    <rect key="frame" x="79" y="464" width="240" height="40"/>
-                    <subviews>
-                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="star-off" translatesAutoresizingMaskIntoConstraints="NO" id="jJ0-HR-qEc">
-                            <rect key="frame" x="0.0" y="0.0" width="40" height="40"/>
-                        </imageView>
-                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="star-off" translatesAutoresizingMaskIntoConstraints="NO" id="kqX-tP-X9g">
-                            <rect key="frame" x="50" y="0.0" width="40" height="40"/>
-                        </imageView>
-                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="star-off" translatesAutoresizingMaskIntoConstraints="NO" id="fEk-Lj-bmm">
-                            <rect key="frame" x="100" y="0.0" width="40" height="40"/>
-                        </imageView>
-                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="star-off" translatesAutoresizingMaskIntoConstraints="NO" id="bYG-us-iJC">
-                            <rect key="frame" x="150" y="0.0" width="40" height="40"/>
-                        </imageView>
-                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="star-off" translatesAutoresizingMaskIntoConstraints="NO" id="KR7-rD-u7A">
-                            <rect key="frame" x="200" y="0.0" width="40" height="40"/>
-                        </imageView>
-                    </subviews>
-                    <constraints>
-                        <constraint firstAttribute="height" constant="40" id="Xym-1a-6hV"/>
-                        <constraint firstAttribute="width" constant="240" id="mqk-k7-054"/>
-                    </constraints>
-                </stackView>
                 <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="tP2-fb-2CE">
                     <rect key="frame" x="79" y="514" width="240" height="40"/>
                     <subviews>
@@ -73,11 +49,44 @@
                         <constraint firstAttribute="width" constant="240" id="ywt-Zi-4Mb"/>
                     </constraints>
                 </stackView>
+                <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="iT7-wd-jf3">
+                    <rect key="frame" x="79" y="464" width="240" height="40"/>
+                    <subviews>
+                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="star-off" translatesAutoresizingMaskIntoConstraints="NO" id="jJ0-HR-qEc">
+                            <rect key="frame" x="0.0" y="0.0" width="40" height="40"/>
+                        </imageView>
+                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="star-off" translatesAutoresizingMaskIntoConstraints="NO" id="kqX-tP-X9g">
+                            <rect key="frame" x="50" y="0.0" width="40" height="40"/>
+                        </imageView>
+                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="star-off" translatesAutoresizingMaskIntoConstraints="NO" id="fEk-Lj-bmm">
+                            <rect key="frame" x="100" y="0.0" width="40" height="40"/>
+                        </imageView>
+                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="star-off" translatesAutoresizingMaskIntoConstraints="NO" id="bYG-us-iJC">
+                            <rect key="frame" x="150" y="0.0" width="40" height="40"/>
+                        </imageView>
+                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="star-off" translatesAutoresizingMaskIntoConstraints="NO" id="KR7-rD-u7A">
+                            <rect key="frame" x="200" y="0.0" width="40" height="40"/>
+                        </imageView>
+                    </subviews>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="40" id="Xym-1a-6hV"/>
+                        <constraint firstAttribute="width" constant="240" id="mqk-k7-054"/>
+                    </constraints>
+                </stackView>
+                <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tgX-O0-LNQ">
+                    <rect key="frame" x="163" y="574" width="72" height="38"/>
+                    <inset key="contentEdgeInsets" minX="15" minY="10" maxX="15" maxY="10"/>
+                    <state key="normal" title="Explore">
+                        <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                </button>
             </subviews>
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
             <constraints>
+                <constraint firstItem="tgX-O0-LNQ" firstAttribute="top" secondItem="tP2-fb-2CE" secondAttribute="bottom" constant="20" id="6UC-H3-WQt"/>
                 <constraint firstItem="cxk-S4-AAf" firstAttribute="top" secondItem="fxr-cI-jiI" secondAttribute="top" id="CeU-Ia-HlN"/>
                 <constraint firstItem="iT7-wd-jf3" firstAttribute="centerX" secondItem="gg1-iF-aXD" secondAttribute="centerX" id="HQo-LI-JgV"/>
+                <constraint firstItem="tgX-O0-LNQ" firstAttribute="centerX" secondItem="fxr-cI-jiI" secondAttribute="centerX" id="I6F-o5-cJe"/>
                 <constraint firstItem="gg1-iF-aXD" firstAttribute="top" secondItem="cxk-S4-AAf" secondAttribute="bottom" constant="-6" id="ISw-7J-uaq"/>
                 <constraint firstItem="tP2-fb-2CE" firstAttribute="top" secondItem="iT7-wd-jf3" secondAttribute="bottom" constant="10" id="L1x-K8-yuj"/>
                 <constraint firstItem="tP2-fb-2CE" firstAttribute="centerX" secondItem="fxr-cI-jiI" secondAttribute="centerX" id="d3T-Y2-fPY"/>
@@ -87,6 +96,7 @@
                 <constraint firstAttribute="trailing" secondItem="cxk-S4-AAf" secondAttribute="trailing" id="wgD-pw-nN0"/>
             </constraints>
             <connections>
+                <outlet property="btnOpen" destination="tgX-O0-LNQ" id="bDw-i1-KsE"/>
                 <outlet property="imageView" destination="cxk-S4-AAf" id="XJX-HN-F7s"/>
                 <outlet property="txtName" destination="gg1-iF-aXD" id="dSF-2B-zA7"/>
             </connections>
