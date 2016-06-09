@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10116" systemVersion="15G7b" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionReusableView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="fxr-cI-jiI" customClass="CategoryCell" customModule="PhotoChallenge" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="398" height="705"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <subviews>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="animals" translatesAutoresizingMaskIntoConstraints="NO" id="cxk-S4-AAf">
+                    <rect key="frame" x="0.0" y="0.0" width="398" height="398"/>
+                    <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstAttribute="width" secondItem="cxk-S4-AAf" secondAttribute="height" multiplier="1:1" id="I1p-m6-Ozb"/>
+                    </constraints>
+                </imageView>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gg1-iF-aXD">
+                    <rect key="frame" x="158" y="392" width="83" height="42"/>
+                    <fontDescription key="fontDescription" type="system" weight="light" pointSize="35"/>
+                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="iT7-wd-jf3">
+                    <rect key="frame" x="79" y="464" width="240" height="40"/>
+                    <subviews>
+                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="star-off" translatesAutoresizingMaskIntoConstraints="NO" id="jJ0-HR-qEc">
+                            <rect key="frame" x="0.0" y="0.0" width="40" height="40"/>
+                        </imageView>
+                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="star-off" translatesAutoresizingMaskIntoConstraints="NO" id="kqX-tP-X9g">
+                            <rect key="frame" x="50" y="0.0" width="40" height="40"/>
+                        </imageView>
+                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="star-off" translatesAutoresizingMaskIntoConstraints="NO" id="fEk-Lj-bmm">
+                            <rect key="frame" x="100" y="0.0" width="40" height="40"/>
+                        </imageView>
+                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="star-off" translatesAutoresizingMaskIntoConstraints="NO" id="bYG-us-iJC">
+                            <rect key="frame" x="150" y="0.0" width="40" height="40"/>
+                        </imageView>
+                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="star-off" translatesAutoresizingMaskIntoConstraints="NO" id="KR7-rD-u7A">
+                            <rect key="frame" x="200" y="0.0" width="40" height="40"/>
+                        </imageView>
+                    </subviews>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="40" id="Xym-1a-6hV"/>
+                        <constraint firstAttribute="width" constant="240" id="mqk-k7-054"/>
+                    </constraints>
+                </stackView>
+                <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="tP2-fb-2CE">
+                    <rect key="frame" x="79" y="514" width="240" height="40"/>
+                    <subviews>
+                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="star-off" translatesAutoresizingMaskIntoConstraints="NO" id="NBh-jK-hQe">
+                            <rect key="frame" x="0.0" y="0.0" width="40" height="40"/>
+                        </imageView>
+                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="star-off" translatesAutoresizingMaskIntoConstraints="NO" id="3nP-k6-Xon">
+                            <rect key="frame" x="50" y="0.0" width="40" height="40"/>
+                        </imageView>
+                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="star-off" translatesAutoresizingMaskIntoConstraints="NO" id="evY-LS-IwF">
+                            <rect key="frame" x="100" y="0.0" width="40" height="40"/>
+                        </imageView>
+                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="star-off" translatesAutoresizingMaskIntoConstraints="NO" id="MAh-1P-Zue">
+                            <rect key="frame" x="150" y="0.0" width="40" height="40"/>
+                        </imageView>
+                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="star-off" translatesAutoresizingMaskIntoConstraints="NO" id="RxJ-q0-QNG">
+                            <rect key="frame" x="200" y="0.0" width="40" height="40"/>
+                        </imageView>
+                    </subviews>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="40" id="V9h-NK-Pyz"/>
+                        <constraint firstAttribute="width" constant="240" id="ywt-Zi-4Mb"/>
+                    </constraints>
+                </stackView>
+            </subviews>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstItem="cxk-S4-AAf" firstAttribute="top" secondItem="fxr-cI-jiI" secondAttribute="top" id="CeU-Ia-HlN"/>
+                <constraint firstItem="iT7-wd-jf3" firstAttribute="centerX" secondItem="gg1-iF-aXD" secondAttribute="centerX" id="HQo-LI-JgV"/>
+                <constraint firstItem="gg1-iF-aXD" firstAttribute="top" secondItem="cxk-S4-AAf" secondAttribute="bottom" constant="-6" id="ISw-7J-uaq"/>
+                <constraint firstItem="tP2-fb-2CE" firstAttribute="top" secondItem="iT7-wd-jf3" secondAttribute="bottom" constant="10" id="L1x-K8-yuj"/>
+                <constraint firstItem="tP2-fb-2CE" firstAttribute="centerX" secondItem="fxr-cI-jiI" secondAttribute="centerX" id="d3T-Y2-fPY"/>
+                <constraint firstItem="cxk-S4-AAf" firstAttribute="leading" secondItem="fxr-cI-jiI" secondAttribute="leading" id="mbr-NS-9Zj"/>
+                <constraint firstItem="iT7-wd-jf3" firstAttribute="top" secondItem="gg1-iF-aXD" secondAttribute="bottom" constant="30" id="mna-TL-XyC"/>
+                <constraint firstItem="gg1-iF-aXD" firstAttribute="centerX" secondItem="fxr-cI-jiI" secondAttribute="centerX" id="sOJ-wI-dfq"/>
+                <constraint firstAttribute="trailing" secondItem="cxk-S4-AAf" secondAttribute="trailing" id="wgD-pw-nN0"/>
+            </constraints>
+            <connections>
+                <outlet property="imageView" destination="cxk-S4-AAf" id="XJX-HN-F7s"/>
+                <outlet property="txtName" destination="gg1-iF-aXD" id="dSF-2B-zA7"/>
+            </connections>
+            <point key="canvasLocation" x="371" y="530.5"/>
+        </collectionReusableView>
+    </objects>
+    <resources>
+        <image name="animals" width="300" height="300"/>
+        <image name="star-off" width="46" height="43"/>
+    </resources>
+</document>

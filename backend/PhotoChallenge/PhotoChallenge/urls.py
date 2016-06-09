@@ -16,8 +16,12 @@ Including another URLconf
 from PhotoChallengeCore import views
 from django.conf.urls import include, url
 from django.contrib import admin
+from rest_framework.authtoken import views
+import PhotoChallengeCore
 
 urlpatterns = [
     url(r'^admin/', include(admin.site.urls)),
-    url(r'^signup/', views.signup)
+    url(r'^signup/', PhotoChallengeCore.views.signup),
+    url(r'^token/', views.obtain_auth_token),
+    url(r'^users/' , PhotoChallengeCore.views.all_users)
 ]

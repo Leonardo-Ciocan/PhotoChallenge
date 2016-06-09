@@ -1,4 +1,8 @@
 import json
+from django.contrib.auth import authenticate
+from rest_framework.authentication import TokenAuthentication
+from rest_framework.permissions import IsAuthenticated
+from rest_framework.views import APIView
 
 from PhotoChallengeCore.forms import SignupForm
 from PhotoChallengeCore.models import Category, Challenge
@@ -24,16 +28,27 @@ def signup(request):
                              password=password)
     return HttpResponse(status=200)
 
-#
-# Category.objects.all().delete()
-# Category.objects.all().delete()
-#
-# animals = Category.objects.create(id=0, name="Animals")
-# Challenge.objects.create(id=0, name="Cat", category=animals)
-# Challenge.objects.create(id=1, name="Squirrel", category=animals)
-# Challenge.objects.create(id=2, name="Eel", category=animals)
-#
-# buildings = Category.objects.create(id=1, name="Buildings")
-# Challenge.objects.create(id=3, name="Cat", category=buildings)
-# Challenge.objects.create(id=4, name="Squirrel", category=buildings)
-# Challenge.objects.create(id=5, name="Eel", category=buildings)
+
+def all_users(request):
+    return HttpResponse(json.dumps(User.objects.all()))
+
+class CategoryView(APIView):
+    authentication_classes = (TokenAuthentication,)
+    permission_classes = (IsAuthenticated,)
+
+    def get(self, request, thread_id):
+        return HttpResponse("", status=200)
+
+
+Category.objects.all().delete()
+Category.objects.all().delete()
+
+animals = Category.objects.create(id=0, name="Animals")
+Challenge.objects.create(id=0, name="Cat", category=animals)
+Challenge.objects.create(id=1, name="Squirrel", category=animals)
+Challenge.objects.create(id=2, name="Eel", category=animals)
+
+buildings = Category.objects.create(id=1, name="Buildings")
+Challenge.objects.create(id=3, name="Cat", category=buildings)
+Challenge.objects.create(id=4, name="Squirrel", category=buildings)
+Challenge.objects.create(id=5, name="Eel", category=buildings)
