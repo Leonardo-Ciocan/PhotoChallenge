@@ -2,6 +2,11 @@ import UIKit
 import DynamicColor
 class CategoryCell: UICollectionViewCell {
     
+    @IBOutlet weak var stack1: UIStackView!
+    
+    
+    @IBOutlet weak var stack2: UIStackView!
+    
     @IBOutlet weak var btnOpen: UIButton!
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var coreView: UIView!
@@ -36,13 +41,35 @@ class CategoryCell: UICollectionViewCell {
 //        imageView.layer.shadowOffset = CGSize(width: 0, height: 0)
 //        imageView.layer.shadowRadius = 5
         
-        
         btnOpen.layer.cornerRadius = 5
         btnOpen.layer.masksToBounds = true
         btnOpen.layer.backgroundColor = category.color.lighterColor().CGColor
         btnOpen.titleLabel?.textColor = category.color.darkerColor()
         btnOpen.setTitleColor(category.color.darkerColor(), forState: .Normal)
-        btnOpen.setTitleColor(category.color.darkerColor(), forState: .Highlighted)
+        btnOpen.setTitleColor(category.color.lighterColor(), forState: .Highlighted)
+        
+        let starOn = UIImage(named: "star-on")?.imageWithRenderingMode(.AlwaysTemplate)
+        let starOff = UIImage(named: "star-off")
+        
+        let stack1stars = category.stars > 5 ? 5 : category.stars
+        let stack2stars = category.stars > 5 ? category.stars - 5  : 0
+        
+        stack1.subviews.forEach({ ($0 as! UIImageView).image = starOff; $0.tintColor = category.color.lighterColor()})
+        stack2.subviews.forEach({ ($0 as! UIImageView).image = starOff; $0.tintColor = category.color.lighterColor()})
+        
+        for i in 0..<stack1stars{
+            (stack1.subviews[i] as! UIImageView).image = starOn
+        }
+        
+        for i in 0..<stack2stars{
+            (stack2.subviews[i] as! UIImageView).image = starOn
+        }
+        
+        btnOpen.addTarget(self, action: #selector(explore), forControlEvents: .TouchUpInside)
+    }
+    
+    func explore(){
+        print("exploring")
     }
     
     

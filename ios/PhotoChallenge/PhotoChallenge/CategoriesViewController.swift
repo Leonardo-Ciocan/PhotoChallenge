@@ -17,9 +17,10 @@ class CategoriesViewController: UIViewController , UICollectionViewDelegate , UI
     
     var lastColor = UIColor.clearColor()
     var categories : [Category] = [
-        Category(id: "0", name: "Animals", stars: 0, color: UIColor.greenColor().darkerColor()),
-        Category(id: "0", name: "Places", stars: 0, color: UIColor.purpleColor()),
-        Category(id: "0", name: "People", stars: 0, color: UIColor.orangeColor()),
+        Category(id: "0", name: "Animals", stars: 3, color: UIColor.greenColor().darkerColor()),
+        Category(id: "0", name: "Places", stars: 7, color: UIColor(red: 0, green: 0.7412, blue: 0.9686, alpha: 1.0) /* #00bdf7 */
+),
+        Category(id: "0", name: "People", stars: 10, color: UIColor.orangeColor()),
     ]
     
     @IBOutlet weak var collectionView: UICollectionView!
@@ -27,12 +28,17 @@ class CategoriesViewController: UIViewController , UICollectionViewDelegate , UI
         self.collectionView.registerNib(UINib(nibName: "CategoryCell", bundle: nil), forCellWithReuseIdentifier: "CategoryCell")
         collectionView.delegate = self
         collectionView.dataSource = self
-        self.tabBarController?.tabBar.tintColor = UIColor.whiteColor()
-        self.tabBarController?.tabBar.barTintColor = categories[0].color
+        //self.tabBarController?.tabBar.tintColor = UIColor.whiteColor()
+        self.tabBarController?.tabBar.tintColor  = categories[0].color
         self.navigationController?.navigationBar.barTintColor = categories[0].color
+        self.navigationController?.navigationBar.tintColor = UIColor.whiteColor()
         self.collectionView.backgroundColor = categories[0].color
         lastColor = categories[0].color
-
+        collectionView.allowsSelection = false
+    }
+    
+    override func viewDidDisappear(animated: Bool) {
+        self.tabBarController?.tabBar.tintColor  = UIColor.blackColor()
     }
     
     func numberOfSectionsInCollectionView(collectionView: UICollectionView) -> Int {
@@ -46,7 +52,13 @@ class CategoriesViewController: UIViewController , UICollectionViewDelegate , UI
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCellWithReuseIdentifier("CategoryCell", forIndexPath: indexPath) as! CategoryCell
         cell.loadCategory(categories[indexPath.row])
+        cell.btnOpen.addTarget(self, action: #selector(buttonExplore), forControlEvents: UIControlEvents.TouchUpInside)
+        
         return cell
+    }
+    
+    func buttonExplore(sender:UIButton?){
+        self.performSegueWithIdentifier("toChallenges", sender: self)
     }
     
     func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
@@ -75,8 +87,9 @@ class CategoriesViewController: UIViewController , UICollectionViewDelegate , UI
         print("last color is \(pos)")
         lastColor = c.color
         self.navigationController?.navigationBar.barTintColor = c.color
-        self.tabBarController?.tabBar.barTintColor = c.color
+        self.tabBarController?.tabBar.tintColor  = c.color
         self.collectionView.backgroundColor = c.color
+        
     }
     
     
@@ -91,7 +104,7 @@ class CategoriesViewController: UIViewController , UICollectionViewDelegate , UI
         
         
             self.navigationController?.navigationBar.barTintColor = col
-            self.tabBarController?.tabBar.barTintColor = col
+            self.tabBarController?.tabBar.tintColor = col
             self.collectionView.backgroundColor = col
         
     }
@@ -131,13 +144,5 @@ class CategoriesViewController: UIViewController , UICollectionViewDelegate , UI
     }
     func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAtIndex section: Int) -> CGFloat {
         return 0
-    }
-}
-
-extension UIColor{
-    func towards(other:UIColor , percentage : Double) -> UIColor{
-        return UIColor(
-            
-        )
     }
 }
