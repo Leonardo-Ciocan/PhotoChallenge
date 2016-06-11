@@ -77,7 +77,7 @@
                         </constraints>
                     </stackView>
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tgX-O0-LNQ">
-                        <rect key="frame" x="158" y="560" width="82" height="38"/>
+                        <rect key="frame" x="158" y="570" width="82" height="38"/>
                         <inset key="contentEdgeInsets" minX="15" minY="10" maxX="15" maxY="10"/>
                         <state key="normal" title="Explore">
                             <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -94,7 +94,7 @@
                 <constraint firstItem="gg1-iF-aXD" firstAttribute="top" secondItem="cxk-S4-AAf" secondAttribute="bottom" constant="10" id="Eqs-RG-Ei4"/>
                 <constraint firstItem="tgX-O0-LNQ" firstAttribute="centerX" secondItem="Kay-NX-0YU" secondAttribute="centerX" id="J8N-gd-500"/>
                 <constraint firstItem="iT7-wd-jf3" firstAttribute="top" secondItem="tP2-fb-2CE" secondAttribute="bottom" constant="10" id="LMR-ku-v1k"/>
-                <constraint firstItem="tgX-O0-LNQ" firstAttribute="top" secondItem="iT7-wd-jf3" secondAttribute="bottom" constant="10" id="Tpe-ma-fW6"/>
+                <constraint firstItem="tgX-O0-LNQ" firstAttribute="top" secondItem="iT7-wd-jf3" secondAttribute="bottom" constant="20" id="Tpe-ma-fW6"/>
                 <constraint firstItem="tP2-fb-2CE" firstAttribute="top" secondItem="gg1-iF-aXD" secondAttribute="bottom" constant="10" id="nrl-56-y8l"/>
                 <constraint firstItem="cxk-S4-AAf" firstAttribute="top" secondItem="Kay-NX-0YU" secondAttribute="top" id="p38-aV-wz6"/>
                 <constraint firstItem="tP2-fb-2CE" firstAttribute="centerX" secondItem="Kay-NX-0YU" secondAttribute="centerX" id="uko-OB-f1G"/>

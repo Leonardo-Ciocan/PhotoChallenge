@@ -7,6 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		B310E71E1D0B9C0100D848E3 /* ChallengeCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B310E71D1D0B9C0100D848E3 /* ChallengeCell.xib */; };
+		B310E7201D0BA05E00D848E3 /* ChallengeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B310E71F1D0BA05E00D848E3 /* ChallengeCell.swift */; };
+		B310E7221D0BB1A500D848E3 /* CategoryHeader.xib in Resources */ = {isa = PBXBuildFile; fileRef = B310E7211D0BB1A500D848E3 /* CategoryHeader.xib */; };
+		B310E7241D0BB1CA00D848E3 /* CategoryHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = B310E7231D0BB1CA00D848E3 /* CategoryHeader.swift */; };
+		B3AAB8531D0B2963009DD5EB /* ChallengesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3AAB8521D0B2963009DD5EB /* ChallengesViewController.swift */; };
 		B3F214C71D09789D00C3D8E9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3F214C61D09789D00C3D8E9 /* AppDelegate.swift */; };
 		B3F214CE1D09789D00C3D8E9 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B3F214CC1D09789D00C3D8E9 /* Main.storyboard */; };
 		B3F214D01D09789D00C3D8E9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B3F214CF1D09789D00C3D8E9 /* Assets.xcassets */; };
@@ -27,6 +32,11 @@
 		086FEBCC07AC36E6D9DD86F0 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		0DA08864CFE02BBC2009E6F0 /* Pods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		97F2DA0DA279C0B348A09BF8 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
+		B310E71D1D0B9C0100D848E3 /* ChallengeCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ChallengeCell.xib; sourceTree = "<group>"; };
+		B310E71F1D0BA05E00D848E3 /* ChallengeCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChallengeCell.swift; sourceTree = "<group>"; };
+		B310E7211D0BB1A500D848E3 /* CategoryHeader.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CategoryHeader.xib; sourceTree = "<group>"; };
+		B310E7231D0BB1CA00D848E3 /* CategoryHeader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategoryHeader.swift; sourceTree = "<group>"; };
+		B3AAB8521D0B2963009DD5EB /* ChallengesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChallengesViewController.swift; sourceTree = "<group>"; };
 		B3F214C31D09789D00C3D8E9 /* PhotoChallenge.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PhotoChallenge.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B3F214C61D09789D00C3D8E9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B3F214CD1D09789D00C3D8E9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -107,6 +117,11 @@
 				B3F214E51D09941C00C3D8E9 /* CategoriesViewController.swift */,
 				B3F214E71D09961500C3D8E9 /* CategoryCell.swift */,
 				B3F214E91D09962700C3D8E9 /* CategoryCell.xib */,
+				B3AAB8521D0B2963009DD5EB /* ChallengesViewController.swift */,
+				B310E71D1D0B9C0100D848E3 /* ChallengeCell.xib */,
+				B310E71F1D0BA05E00D848E3 /* ChallengeCell.swift */,
+				B310E7211D0BB1A500D848E3 /* CategoryHeader.xib */,
+				B310E7231D0BB1CA00D848E3 /* CategoryHeader.swift */,
 			);
 			path = PhotoChallenge;
 			sourceTree = "<group>";
@@ -182,7 +197,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B310E7221D0BB1A500D848E3 /* CategoryHeader.xib in Resources */,
 				B3F214EA1D09962700C3D8E9 /* CategoryCell.xib in Resources */,
+				B310E71E1D0B9C0100D848E3 /* ChallengeCell.xib in Resources */,
 				B3F214D31D09789D00C3D8E9 /* LaunchScreen.storyboard in Resources */,
 				B3F214D01D09789D00C3D8E9 /* Assets.xcassets in Resources */,
 				B3F214DB1D0978AD00C3D8E9 /* Podfile in Resources */,
@@ -249,8 +266,11 @@
 				B3F214DF1D097BBE00C3D8E9 /* AuthViewController.swift in Sources */,
 				B3F214DD1D0978EE00C3D8E9 /* API.swift in Sources */,
 				B3F214E41D097D9300C3D8E9 /* Constants.swift in Sources */,
+				B3AAB8531D0B2963009DD5EB /* ChallengesViewController.swift in Sources */,
+				B310E7201D0BA05E00D848E3 /* ChallengeCell.swift in Sources */,
 				B3F214E81D09961500C3D8E9 /* CategoryCell.swift in Sources */,
 				B3F214E61D09941C00C3D8E9 /* CategoriesViewController.swift in Sources */,
+				B310E7241D0BB1CA00D848E3 /* CategoryHeader.swift in Sources */,
 				B3F214E21D097C5700C3D8E9 /* Category.swift in Sources */,
 				B3F214EC1D09A30600C3D8E9 /* Challenge.swift in Sources */,
 			);

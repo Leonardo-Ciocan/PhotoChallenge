@@ -3,6 +3,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
@@ -70,10 +71,10 @@
             </objects>
             <point key="canvasLocation" x="1245" y="-729"/>
         </scene>
-        <!--View Controller-->
+        <!--Challenges View Controller-->
         <scene sceneID="s5z-qU-cQi">
             <objects>
-                <viewController id="c4B-r4-1ir" sceneMemberID="viewController">
+                <viewController automaticallyAdjustsScrollViewInsets="NO" id="c4B-r4-1ir" customClass="ChallengesViewController" customModule="PhotoChallenge" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="tES-jn-fAM"/>
                         <viewControllerLayoutGuide type="bottom" id="xqv-jn-ZDY"/>
@@ -81,9 +82,42 @@
                     <view key="view" contentMode="scaleToFill" id="Fbz-Cm-CMK">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lIm-z7-RP4" customClass="CategoryHeader" customModule="PhotoChallenge" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="34" width="414" height="414"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="lIm-z7-RP4" secondAttribute="height" multiplier="1:1" id="USD-Kv-Ehc"/>
+                                </constraints>
+                            </view>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="Umh-Xc-RpV">
+                                <rect key="frame" x="0.0" y="64" width="414" height="623"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="O9K-jI-r5j">
+                                    <size key="itemSize" width="50" height="50"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells/>
+                            </collectionView>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="lIm-z7-RP4" firstAttribute="leading" secondItem="Fbz-Cm-CMK" secondAttribute="leadingMargin" constant="-20" id="HeM-QX-xIA"/>
+                            <constraint firstItem="Umh-Xc-RpV" firstAttribute="leading" secondItem="Fbz-Cm-CMK" secondAttribute="leadingMargin" constant="-20" id="YQ0-xx-l9T"/>
+                            <constraint firstItem="xqv-jn-ZDY" firstAttribute="top" secondItem="Umh-Xc-RpV" secondAttribute="bottom" id="hHz-IA-gXt"/>
+                            <constraint firstItem="lIm-z7-RP4" firstAttribute="top" secondItem="tES-jn-fAM" secondAttribute="bottom" constant="-30" id="jaX-x5-nbn"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="lIm-z7-RP4" secondAttribute="trailing" constant="-20" id="kSG-4t-Cq4"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="Umh-Xc-RpV" secondAttribute="trailing" constant="-20" id="lSN-iT-4FR"/>
+                            <constraint firstItem="Umh-Xc-RpV" firstAttribute="top" secondItem="tES-jn-fAM" secondAttribute="bottom" id="m9p-rO-gOQ"/>
+                        </constraints>
                     </view>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina55"/>
+                    <connections>
+                        <outlet property="categoryHeader" destination="lIm-z7-RP4" id="Uvq-qe-2FH"/>
+                        <outlet property="collectionView" destination="Umh-Xc-RpV" id="3Ru-HX-auQ"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ra7-bi-x7k" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

@@ -52,13 +52,22 @@ class CategoriesViewController: UIViewController , UICollectionViewDelegate , UI
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCellWithReuseIdentifier("CategoryCell", forIndexPath: indexPath) as! CategoryCell
         cell.loadCategory(categories[indexPath.row])
+        cell.btnOpen.tag = indexPath.row
         cell.btnOpen.addTarget(self, action: #selector(buttonExplore), forControlEvents: UIControlEvents.TouchUpInside)
         
         return cell
     }
     
+    var selectedIndex = 0
     func buttonExplore(sender:UIButton?){
+        selectedIndex = sender!.tag
         self.performSegueWithIdentifier("toChallenges", sender: self)
+    }
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if(segue.identifier == "toChallenges"){
+            (segue.destinationViewController as! ChallengesViewController).category = categories[selectedIndex]
+        }
     }
     
     func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
