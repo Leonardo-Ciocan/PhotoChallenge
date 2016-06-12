@@ -14,7 +14,7 @@ class AuthViewController: UIViewController {
     
     override func viewDidAppear(animated: Bool) {
         self.view.hidden = true
-        if true || NSUserDefaults.standardUserDefaults().stringForKey("token") != nil{
+        if NSUserDefaults.standardUserDefaults().stringForKey("token") != nil{
             self.performSegueWithIdentifier("toPage", sender: self)
             print(NSUserDefaults.standardUserDefaults().stringForKey("token"))
         }

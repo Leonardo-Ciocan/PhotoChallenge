@@ -12,6 +12,7 @@
 		B310E7221D0BB1A500D848E3 /* CategoryHeader.xib in Resources */ = {isa = PBXBuildFile; fileRef = B310E7211D0BB1A500D848E3 /* CategoryHeader.xib */; };
 		B310E7241D0BB1CA00D848E3 /* CategoryHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = B310E7231D0BB1CA00D848E3 /* CategoryHeader.swift */; };
 		B38EF1461D0D167B0079B62B /* Submission.swift in Sources */ = {isa = PBXBuildFile; fileRef = B38EF1451D0D167B0079B62B /* Submission.swift */; };
+		B38EF1481D0D20500079B62B /* MainTabController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B38EF1471D0D20500079B62B /* MainTabController.swift */; };
 		B3AAB8531D0B2963009DD5EB /* ChallengesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3AAB8521D0B2963009DD5EB /* ChallengesViewController.swift */; };
 		B3F214C71D09789D00C3D8E9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3F214C61D09789D00C3D8E9 /* AppDelegate.swift */; };
 		B3F214CE1D09789D00C3D8E9 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B3F214CC1D09789D00C3D8E9 /* Main.storyboard */; };
@@ -38,6 +39,7 @@
 		B310E7211D0BB1A500D848E3 /* CategoryHeader.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CategoryHeader.xib; sourceTree = "<group>"; };
 		B310E7231D0BB1CA00D848E3 /* CategoryHeader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategoryHeader.swift; sourceTree = "<group>"; };
 		B38EF1451D0D167B0079B62B /* Submission.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Submission.swift; sourceTree = "<group>"; };
+		B38EF1471D0D20500079B62B /* MainTabController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainTabController.swift; sourceTree = "<group>"; };
 		B3AAB8521D0B2963009DD5EB /* ChallengesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChallengesViewController.swift; sourceTree = "<group>"; };
 		B3F214C31D09789D00C3D8E9 /* PhotoChallenge.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PhotoChallenge.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B3F214C61D09789D00C3D8E9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -124,6 +126,7 @@
 				B310E71F1D0BA05E00D848E3 /* ChallengeCell.swift */,
 				B310E7211D0BB1A500D848E3 /* CategoryHeader.xib */,
 				B310E7231D0BB1CA00D848E3 /* CategoryHeader.swift */,
+				B38EF1471D0D20500079B62B /* MainTabController.swift */,
 			);
 			path = PhotoChallenge;
 			sourceTree = "<group>";
@@ -271,6 +274,7 @@
 				B38EF1461D0D167B0079B62B /* Submission.swift in Sources */,
 				B3F214E41D097D9300C3D8E9 /* Constants.swift in Sources */,
 				B3AAB8531D0B2963009DD5EB /* ChallengesViewController.swift in Sources */,
+				B38EF1481D0D20500079B62B /* MainTabController.swift in Sources */,
 				B310E7201D0BA05E00D848E3 /* ChallengeCell.swift in Sources */,
 				B3F214E81D09961500C3D8E9 /* CategoryCell.swift in Sources */,
 				B3F214E61D09941C00C3D8E9 /* CategoriesViewController.swift in Sources */,

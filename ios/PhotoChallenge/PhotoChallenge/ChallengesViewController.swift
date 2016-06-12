@@ -11,16 +11,6 @@ import UIKit
 class ChallengesViewController: UIViewController ,UICollectionViewDelegate , UICollectionViewDataSource ,UICollectionViewDelegateFlowLayout {
     
     @IBOutlet weak var collectionView: UICollectionView!
-
-    var challenges : [Challenge] = [
-        Challenge(name: "Dog"),
-        Challenge(name:"Cat"),
-        Challenge(name:"Fish"),
-        Challenge(name:"Pig"),
-        Challenge(name:"Swan"),
-        Challenge(name:"Rhino"),
-        Challenge(name:"Frog"),
-    ]
     
     var category : Category?
 
@@ -37,12 +27,12 @@ class ChallengesViewController: UIViewController ,UICollectionViewDelegate , UIC
     
     
     func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return challenges.count
+        return category!.challenges.count
     }
     
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCellWithReuseIdentifier("ChallengeCell", forIndexPath: indexPath) as! ChallengeCell
-        cell.loadData(self.challenges[indexPath.row], category: self.category!)
+        cell.loadData(self.category!.challenges[indexPath.row], category: self.category!)
         return cell
     }
     

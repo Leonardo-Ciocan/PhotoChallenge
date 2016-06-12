@@ -3,6 +3,10 @@ import UIKit
 import SwiftyJSON
 
 class Category{
+    
+    static var all : [Category] = []
+    var challenges : [Challenge] = []
+    
     var name = ""
     var id = "0"
     var stars = 0
@@ -39,7 +43,7 @@ class Category{
         guard let g = parts[1] else { return UIColor.clearColor() }
         guard let b = parts[2] else { return UIColor.clearColor() }
         
-        return UIColor(red: CGFloat(r), green: CGFloat(g), blue: CGFloat(b), alpha: 255)
+        return UIColor(red: CGFloat(r) / 255, green: CGFloat(g) / 255, blue: CGFloat(b) / 255 , alpha: 1)
     }
     
 }

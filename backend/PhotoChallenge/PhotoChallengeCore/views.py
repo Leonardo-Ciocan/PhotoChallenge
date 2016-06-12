@@ -32,24 +32,32 @@ def signup(request):
 def all_users(request):
     return HttpResponse(json.dumps(User.objects.all()))
 
+
 class CategoryView(APIView):
     authentication_classes = (TokenAuthentication,)
     permission_classes = (IsAuthenticated,)
 
-    def get(self, request, thread_id):
+    def get(self, request):
+        return HttpResponse(json.dumps([c.to_json() for c in Category.objects.all()]), status=200)
 
-        return HttpResponse("", status=200)
 
+class ChallengeView(APIView):
+    authentication_classes = (TokenAuthentication,)
+    permission_classes = (IsAuthenticated,)
 
-Category.objects.all().delete()
-Category.objects.all().delete()
+    def get(self, request, category_id):
+        return HttpResponse(json.dumps([c.to_json() for c in Challenge.objects.filter(category__id=category_id)]), status=200)
 
-animals = Category.objects.create(id=0, name="Animals")
-Challenge.objects.create(id=0, name="Cat", category=animals)
-Challenge.objects.create(id=1, name="Squirrel", category=animals)
-Challenge.objects.create(id=2, name="Eel", category=animals)
+def reset_data():
+    Category.objects.all().delete()
+    Challenge.objects.all().delete()
 
-buildings = Category.objects.create(id=1, name="Buildings")
-Challenge.objects.create(id=3, name="Cat", category=buildings)
-Challenge.objects.create(id=4, name="Squirrel", category=buildings)
-Challenge.objects.create(id=5, name="Eel", category=buildings)
+    animals = Category.objects.create(id=0, name="Animals", color="0,186,0")
+    Challenge.objects.create(id=0, name="Cat", category=animals)
+    Challenge.objects.create(id=1, name="Squirrel", category=animals)
+    Challenge.objects.create(id=2, name="Eel", category=animals)
+
+    buildings = Category.objects.create(id=1, name="Places", color="3,163,243")
+    Challenge.objects.create(id=3, name="Church", category=buildings)
+    Challenge.objects.create(id=4, name="Statue of Liberty", category=buildings)
+    Challenge.objects.create(id=5, name="Eiffel tower", category=buildings)

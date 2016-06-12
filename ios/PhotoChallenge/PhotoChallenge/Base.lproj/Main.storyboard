@@ -207,6 +207,7 @@
                             <constraint firstAttribute="leadingMargin" secondItem="V6m-4g-3u3" secondAttribute="leading" id="6ca-0P-wXN"/>
                             <constraint firstAttribute="trailingMargin" secondItem="0Eu-b4-KN7" secondAttribute="trailing" id="7KM-eb-FXg"/>
                             <constraint firstItem="0Eu-b4-KN7" firstAttribute="top" secondItem="V6m-4g-3u3" secondAttribute="bottom" constant="29" id="EZa-LC-npI"/>
+                            <constraint firstAttribute="leadingMargin" secondItem="0Eu-b4-KN7" secondAttribute="leading" id="MJz-c1-T56"/>
                             <constraint firstItem="aGZ-64-2NI" firstAttribute="top" secondItem="0Eu-b4-KN7" secondAttribute="bottom" constant="25" id="UzQ-sy-XDC"/>
                             <constraint firstItem="V6m-4g-3u3" firstAttribute="top" secondItem="peQ-VK-V6W" secondAttribute="bottom" constant="51" id="VFJ-zB-HoI"/>
                             <constraint firstAttribute="trailingMargin" secondItem="V6m-4g-3u3" secondAttribute="trailing" id="fY6-cj-Ia7"/>
@@ -224,10 +225,10 @@
             </objects>
             <point key="canvasLocation" x="-875" y="7"/>
         </scene>
-        <!--Tab Bar Controller-->
+        <!--Main Tab Controller-->
         <scene sceneID="yl2-sM-qoP">
             <objects>
-                <tabBarController id="49e-Tb-3d3" sceneMemberID="viewController">
+                <tabBarController id="49e-Tb-3d3" customClass="MainTabController" customModule="PhotoChallenge" customModuleProvider="target" sceneMemberID="viewController">
                     <nil key="simulatedBottomBarMetrics"/>
                     <tabBar key="tabBar" contentMode="scaleToFill" shadowImage="transparent" id="W28-zg-YXA">
                         <rect key="frame" x="0.0" y="975" width="768" height="49"/>

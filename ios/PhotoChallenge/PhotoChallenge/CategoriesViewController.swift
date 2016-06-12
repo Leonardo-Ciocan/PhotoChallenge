@@ -16,16 +16,22 @@ class CategoriesViewController: UIViewController , UICollectionViewDelegate , UI
     }
     
     var lastColor = UIColor.clearColor()
-    var categories : [Category] = [
-        Category(id: "0", name: "Animals", stars: 3, color: UIColor.greenColor().darkerColor()),
-        Category(id: "0", name: "Places", stars: 7, color: UIColor(red: 0, green: 0.7412, blue: 0.9686, alpha: 1.0) /* #00bdf7 */
-),
-        Category(id: "0", name: "People", stars: 10, color: UIColor.orangeColor()),
-    ]
+    var categories : [Category] = []
+    
+    
+//    [
+//        Category(id: "0", name: "Animals", stars: 3, color: UIColor.greenColor().darkerColor()),
+//        Category(id: "0", name: "Places", stars: 7, color: UIColor(red: 0, green: 0.7412, blue: 0.9686, alpha: 1.0) /* #00bdf7 */
+//),
+//        Category(id: "0", name: "People", stars: 10, color: UIColor.orangeColor()),
+//    ]
     
     @IBOutlet weak var collectionView: UICollectionView!
     override func viewDidLoad() {
         self.collectionView.registerNib(UINib(nibName: "CategoryCell", bundle: nil), forCellWithReuseIdentifier: "CategoryCell")
+        
+        categories = Category.all
+        
         collectionView.delegate = self
         collectionView.dataSource = self
         //self.tabBarController?.tabBar.tintColor = UIColor.whiteColor()
@@ -35,6 +41,7 @@ class CategoriesViewController: UIViewController , UICollectionViewDelegate , UI
         self.collectionView.backgroundColor = categories[0].color
         lastColor = categories[0].color
         collectionView.allowsSelection = false
+        
     }
     
     override func viewDidDisappear(animated: Bool) {
@@ -61,7 +68,12 @@ class CategoriesViewController: UIViewController , UICollectionViewDelegate , UI
     var selectedIndex = 0
     func buttonExplore(sender:UIButton?){
         selectedIndex = sender!.tag
-        self.performSegueWithIdentifier("toChallenges", sender: self)
+        
+        API.getChallenges(String(selectedIndex) , success:{ challenges in
+            self.categories[self.selectedIndex].challenges = challenges
+            self.performSegueWithIdentifier("toChallenges", sender: self)
+            }, error: nil)
+        
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
@@ -93,7 +105,6 @@ class CategoriesViewController: UIViewController , UICollectionViewDelegate , UI
 //            self.tabBarController?.tabBar.barTintColor = c.color
 //            self.collectionView.backgroundColor = c.color
 //        })
-        print("last color is \(pos)")
         lastColor = c.color
         self.navigationController?.navigationBar.barTintColor = c.color
         self.tabBarController?.tabBar.tintColor  = c.color
@@ -108,7 +119,6 @@ class CategoriesViewController: UIViewController , UICollectionViewDelegate , UI
             if(pos == categories.count-1){ return }
             //print("\(pos)-\(pos+1)")
             let c = categories[pos+1]
-            print((collectionView.contentOffset.x % self.view.frame.width) / (self.view.frame.width))
             let col = self.fadeFromColor(categories[pos].color, toColor: c.color, withPercentage: (collectionView.contentOffset.x % self.view.frame.width) / (self.view.frame.width))
         
         

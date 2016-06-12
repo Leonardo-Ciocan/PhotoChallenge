@@ -16,8 +16,8 @@ def create_auth_token(sender, instance=None, created=False, **kwargs):
 
 class Category(models.Model):
     id = models.AutoField(primary_key=True)
-    name = models.TextField()
-    color = models.TextField()
+    name = models.TextField(default="")
+    color = models.TextField(default="")
 
     def to_json(self):
         return {
@@ -30,7 +30,7 @@ class Category(models.Model):
 
 class Challenge(models.Model):
     id = models.AutoField(primary_key=True)
-    name = models.TextField()
+    name = models.TextField(default="")
     category = models.ForeignKey(Category)
 
     def to_json(self):

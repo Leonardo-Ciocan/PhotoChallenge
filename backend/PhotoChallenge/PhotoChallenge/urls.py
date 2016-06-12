@@ -23,5 +23,7 @@ urlpatterns = [
     url(r'^admin/', include(admin.site.urls)),
     url(r'^signup/', PhotoChallengeCore.views.signup),
     url(r'^token/', views.obtain_auth_token),
-    url(r'^users/' , PhotoChallengeCore.views.all_users)
+    url(r'^categories/', PhotoChallengeCore.views.CategoryView.as_view()),
+    url(r'^challenges/([0-9]+)', PhotoChallengeCore.views.ChallengeView.as_view()),
+
 ]
