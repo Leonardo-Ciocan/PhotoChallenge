@@ -37,6 +37,7 @@ class CategoryView(APIView):
     permission_classes = (IsAuthenticated,)
 
     def get(self, request, thread_id):
+
         return HttpResponse("", status=200)
 
 

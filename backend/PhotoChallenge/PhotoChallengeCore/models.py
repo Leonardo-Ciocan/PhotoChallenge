@@ -17,12 +17,27 @@ def create_auth_token(sender, instance=None, created=False, **kwargs):
 class Category(models.Model):
     id = models.AutoField(primary_key=True)
     name = models.TextField()
+    color = models.TextField()
+
+    def to_json(self):
+        return {
+            "id": self.id,
+            "name": self.name,
+            "stars": 0,
+            "color": self.color
+        }
 
 
 class Challenge(models.Model):
     id = models.AutoField(primary_key=True)
     name = models.TextField()
     category = models.ForeignKey(Category)
+
+    def to_json(self):
+        return {
+            "id": self.id,
+            "name": self.name
+        }
 
 
 class Submission(models.Model):

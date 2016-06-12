@@ -1,5 +1,6 @@
 import Foundation
 import UIKit
+import SwiftyJSON
 
 class Category{
     var name = ""
@@ -13,4 +14,32 @@ class Category{
         self.stars = stars
         self.color = color
     }
+    
+    init(json:JSON){
+        if let name = json["name"].string {
+            self.name = name
+        }
+        
+        if let id = json["id"].string {
+            self.id = id
+        }
+        
+        if let stars = json["stars"].int {
+            self.stars = stars
+        }
+        
+        if let color = json["color"].string {
+            self.color = stringToColor(color)
+        }
+    }
+    
+    func stringToColor(color:String) -> UIColor {
+        let parts = color.componentsSeparatedByString(",").map({Int($0)})
+        guard let r = parts[0] else { return UIColor.clearColor() }
+        guard let g = parts[1] else { return UIColor.clearColor() }
+        guard let b = parts[2] else { return UIColor.clearColor() }
+        
+        return UIColor(red: CGFloat(r), green: CGFloat(g), blue: CGFloat(b), alpha: 255)
+    }
+    
 }

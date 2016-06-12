@@ -16,7 +16,10 @@ class ChallengesViewController: UIViewController ,UICollectionViewDelegate , UIC
         Challenge(name: "Dog"),
         Challenge(name:"Cat"),
         Challenge(name:"Fish"),
+        Challenge(name:"Pig"),
         Challenge(name:"Swan"),
+        Challenge(name:"Rhino"),
+        Challenge(name:"Frog"),
     ]
     
     var category : Category?
@@ -29,6 +32,7 @@ class ChallengesViewController: UIViewController ,UICollectionViewDelegate , UIC
         collectionView.delegate = self
         collectionView.dataSource = self
         categoryHeader?.loadData(category!)
+        self.navigationItem.title = category?.name
     }
     
     
@@ -43,7 +47,7 @@ class ChallengesViewController: UIViewController ,UICollectionViewDelegate , UIC
     }
     
     func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAtIndex section: Int) -> UIEdgeInsets {
-        return UIEdgeInsets(top: self.view.frame.width-30, left: 10, bottom: 0, right: 10)
+        return UIEdgeInsets(top: self.view.frame.width-30, left: 10, bottom: 10, right: 10)
     }
     
     func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAtIndex section: Int) -> CGFloat {
@@ -59,7 +63,7 @@ class ChallengesViewController: UIViewController ,UICollectionViewDelegate , UIC
     }
     
     func scrollViewDidScroll(scrollView: UIScrollView) {
-        let p = scrollView.contentOffset.y / categoryHeader.frame.height
+        let p = scrollView.contentOffset.y / (categoryHeader.frame.height/2.5)
         categoryHeader.alpha = 1 - p
     }
     
