@@ -32,11 +32,13 @@ class Challenge(models.Model):
     id = models.AutoField(primary_key=True)
     name = models.TextField(default="")
     category = models.ForeignKey(Category)
+    tag = models.TextField(default="")
 
     def to_json(self):
         return {
             "id": self.id,
-            "name": self.name
+            "name": self.name,
+            "tag": self.tag
         }
 
 

@@ -91,7 +91,7 @@
                                 </constraints>
                             </view>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="Umh-Xc-RpV">
-                                <rect key="frame" x="0.0" y="64" width="414" height="623"/>
+                                <rect key="frame" x="0.0" y="64" width="414" height="672"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="O9K-jI-r5j">
                                     <size key="itemSize" width="50" height="50"/>
@@ -106,7 +106,7 @@
                         <constraints>
                             <constraint firstItem="lIm-z7-RP4" firstAttribute="leading" secondItem="Fbz-Cm-CMK" secondAttribute="leadingMargin" constant="-20" id="HeM-QX-xIA"/>
                             <constraint firstItem="Umh-Xc-RpV" firstAttribute="leading" secondItem="Fbz-Cm-CMK" secondAttribute="leadingMargin" constant="-20" id="YQ0-xx-l9T"/>
-                            <constraint firstItem="xqv-jn-ZDY" firstAttribute="top" secondItem="Umh-Xc-RpV" secondAttribute="bottom" id="hHz-IA-gXt"/>
+                            <constraint firstItem="xqv-jn-ZDY" firstAttribute="top" secondItem="Umh-Xc-RpV" secondAttribute="bottom" constant="-49" id="hHz-IA-gXt"/>
                             <constraint firstItem="lIm-z7-RP4" firstAttribute="top" secondItem="tES-jn-fAM" secondAttribute="bottom" constant="-30" id="jaX-x5-nbn"/>
                             <constraint firstAttribute="trailingMargin" secondItem="lIm-z7-RP4" secondAttribute="trailing" constant="-20" id="kSG-4t-Cq4"/>
                             <constraint firstAttribute="trailingMargin" secondItem="Umh-Xc-RpV" secondAttribute="trailing" constant="-20" id="lSN-iT-4FR"/>

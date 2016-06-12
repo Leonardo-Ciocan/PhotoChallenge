@@ -73,20 +73,15 @@ class CategoriesViewController: UIViewController , UICollectionViewDelegate , UI
             self.categories[self.selectedIndex].challenges = challenges
             self.performSegueWithIdentifier("toChallenges", sender: self)
             }, error: nil)
-        
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if(segue.identifier == "toChallenges"){
-            (segue.destinationViewController as! ChallengesViewController).category = categories[selectedIndex]
+            (segue.destinationViewController as! ChallengesViewController).setCategory(categories[selectedIndex])
         }
     }
     
     func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
-        let screenRect = UIScreen.mainScreen().bounds
-        let screenWidth = screenRect.size.width
-        let cellWidth = screenWidth / 2.0
-        let size = CGSizeMake(cellWidth/(1/1.5), cellWidth-15)
         return CGSize(width: self.view.frame.width + 5, height: self.view.frame.height)
     }
     

@@ -3,6 +3,7 @@ import SwiftyJSON
 
 class Challenge{
     var name = ""
+    var tag = ""
     var id = "0"
     
     init(name:String){
@@ -16,6 +17,10 @@ class Challenge{
 
         if let name = json["name"].string {
             self.name = name
+        }
+        
+        if let tag = json["tag"].string {
+            self.tag = tag
         }
     }
     

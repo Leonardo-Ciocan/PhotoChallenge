@@ -12,33 +12,56 @@ class ChallengesViewController: UIViewController ,UICollectionViewDelegate , UIC
     
     @IBOutlet weak var collectionView: UICollectionView!
     
+    var challenges : [ String : [Challenge]] = [:]
+    var sections : [String] = []
+    
     var category : Category?
+    
+    func setCategory(value : Category?){
+        guard value != nil else {return}
+        for item in (value?.challenges)!{
+            if let _ = challenges[item.tag]{
+                challenges[item.tag]!.append(item)
+            }
+            else{
+                challenges[item.tag] = [item]
+                sections.append(item.tag)
+            }
+        }
+        self.category = value
+    }
 
     
     @IBOutlet weak var categoryHeader: CategoryHeader!
     
     override func viewDidLoad() {
         self.collectionView.registerNib(UINib(nibName: "ChallengeCell", bundle: nil), forCellWithReuseIdentifier: "ChallengeCell")
+        
+        self.collectionView.registerClass(ChallengeHeader.self, forSupplementaryViewOfKind: UICollectionElementKindSectionHeader, withReuseIdentifier: "ChallengeHeader")
         collectionView.delegate = self
         collectionView.dataSource = self
-        categoryHeader?.loadData(category!)
+        categoryHeader.hidden = true
         self.navigationItem.title = category?.name
     }
     
+    func numberOfSectionsInCollectionView(collectionView: UICollectionView) -> Int {
+        return sections.count
+    }
     
     func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return category!.challenges.count
+        return challenges[sections[section]]!.count
     }
     
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCellWithReuseIdentifier("ChallengeCell", forIndexPath: indexPath) as! ChallengeCell
-        cell.loadData(self.category!.challenges[indexPath.row], category: self.category!)
+        cell.loadData(challenges[sections[indexPath.section]]![indexPath.row], category: self.category!)
         return cell
     }
     
     func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAtIndex section: Int) -> UIEdgeInsets {
-        return UIEdgeInsets(top: self.view.frame.width-30, left: 10, bottom: 10, right: 10)
+        return UIEdgeInsets(top: 0, left: 10, bottom: section == sections.count - 1 ? 50 : 0, right: 10)
     }
+    
     
     func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAtIndex section: Int) -> CGFloat {
         return 0
@@ -57,4 +80,18 @@ class ChallengesViewController: UIViewController ,UICollectionViewDelegate , UIC
         categoryHeader.alpha = 1 - p
     }
     
+    func collectionView(collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, atIndexPath indexPath: NSIndexPath) -> UICollectionReusableView {
+        switch kind{
+        case UICollectionElementKindSectionHeader:
+            let header = collectionView.dequeueReusableSupplementaryViewOfKind(kind, withReuseIdentifier: "ChallengeHeader", forIndexPath: indexPath) as! ChallengeHeader
+            header.txtName.text = sections[indexPath.section].uppercaseString
+            header.loadData(category!)
+            return header
+        default:
+            assert(false,"Unexpected element")
+        }
+    }
+    func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
+        return CGSize(width: self.view.frame.width, height: 50)
+    }
 }
