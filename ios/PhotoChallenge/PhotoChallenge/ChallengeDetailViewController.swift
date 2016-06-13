@@ -9,37 +9,54 @@
 import UIKit
 import DynamicColor
 import TOCropViewController
-
+extension UIView {
+    func roundCorners(corners:UIRectCorner, radius: CGFloat) {
+        let path = UIBezierPath(roundedRect: self.bounds, byRoundingCorners: corners, cornerRadii: CGSize(width: radius, height: radius))
+        let mask = CAShapeLayer()
+        mask.path = path.CGPath
+        self.layer.mask = mask
+    }
+}
 class ChallengeDetailViewController: UIViewController , UIImagePickerControllerDelegate ,TOCropViewControllerDelegate , UINavigationControllerDelegate{
 
+    @IBOutlet weak var shadowView: UIView!
     var category : Category?
     var challenge : Challenge?
     
+    @IBOutlet weak var friendButton: UIView!
     @IBOutlet weak var btnShoot: UIView!
 
     @IBOutlet weak var imgCamera: UIImageView!
     
+    @IBOutlet weak var blur: UIVisualEffectView!
     
+    @IBOutlet weak var stackview: UIStackView!
+    @IBOutlet weak var btnDelete: UIView!
     
+    @IBOutlet weak var topMargin: NSLayoutConstraint!
+    @IBOutlet weak var lblTakePicture: UILabel!
     @IBOutlet weak var imgHeader: UIImageView!
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        imgCamera.image = imgCamera.image?.imageWithRenderingMode(.AlwaysTemplate)
-        imgCamera.tintColor = UIColor.whiteColor()
+       // imgCamera.image = imgCamera.image?.imageWithRenderingMode(.AlwaysTemplate)
+       // imgCamera.tintColor = UIColor.whiteColor()
         
-        btnShoot.layer.cornerRadius = 5
-        btnShoot.layer.masksToBounds = true
-        btnShoot.backgroundColor = category?.color
+        //btnShoot.layer.cornerRadius = 5
+        //btnShoot.layer.masksToBounds = true
+        //btnShoot.backgroundColor = category?.color
+        
+        blur.backgroundColor = UIColor.blackColor().adjustedAlphaColor(-0.65)
+        blur.alpha = 0.9
         
         self.navigationItem.title = challenge?.name
         
-        imgHeader.layer.shadowColor = UIColor.blackColor().CGColor
-        imgHeader.layer.shadowOffset = CGSize(width: 0, height: 1)
-        imgHeader.layer.shadowRadius = 5
-        imgHeader.layer.shadowOpacity = 0.25
-        imgHeader.layer.masksToBounds = false
-        imgHeader.clipsToBounds = false
+        shadowView.layer.shadowColor = UIColor.blackColor().CGColor
+        shadowView.layer.shadowOffset = CGSize(width: 0, height: 1)
+        shadowView.layer.shadowRadius = 5
+        shadowView.layer.shadowOpacity = 0.25
+        shadowView.layer.masksToBounds = false
+        shadowView.clipsToBounds = false
         
         if challenge!.hasSubmission && challenge!.submissionImage != nil {
                 imgHeader.image = challenge?.submissionImage!
@@ -55,6 +72,92 @@ class ChallengeDetailViewController: UIViewController , UIImagePickerControllerD
         
         let tapped = UITapGestureRecognizer(target: self, action: #selector(edit(_:)))
         btnShoot.addGestureRecognizer(tapped)
+        
+//        do {
+//        let maskPath = UIBezierPath(roundedRect: stackview.bounds, byRoundingCorners: [.BottomLeft, .BottomRight], cornerRadii: CGSizeMake(10, 10))
+//        let maskLayer = CAShapeLayer()
+//        maskLayer.frame = self.stackview.bounds
+//        maskLayer.path  = maskPath.CGPath
+//        stackview.layer.mask = maskLayer
+//        stackview.setNeedsDisplay()
+//        }
+//        
+//        do{
+//            let maskPath = UIBezierPath(roundedRect: self.imgHeader.bounds, byRoundingCorners: [.TopLeft, .TopRight], cornerRadii: CGSizeMake(10, 10))
+//            let maskLayer = CAShapeLayer()
+//            maskLayer.frame = self.imgHeader.bounds
+//            maskLayer.path  = maskPath.CGPath
+//            imgHeader.layer.mask = maskLayer
+//            imgHeader.setNeedsDisplay()
+//        }
+        
+    
+        
+        btnShoot.clipsToBounds = true
+        btnShoot.layer.masksToBounds = true
+        btnShoot.layer.borderWidth = 1
+        btnShoot.layer.borderColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.06).CGColor
+        
+        btnDelete.layer.borderWidth = 1
+        btnDelete.layer.borderColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.06).CGColor
+
+        
+        friendButton.layer.borderWidth = 1
+        friendButton.layer.borderColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.06).CGColor
+
+        
+        self.modalPresentationStyle = UIModalPresentationStyle.OverCurrentContext
+        
+        let pan = UIPanGestureRecognizer(target: self, action: #selector(panDown))
+        imgHeader.addGestureRecognizer(pan)
+        
+        
+        blur.alpha = 0
+        topMargin.constant = self.view.frame.height + 10
+        UIView.animateWithDuration(0.8, animations: {
+            self.view.layoutIfNeeded()
+            self.blur.alpha = 1
+        })
+    }
+    
+    func panDown(sender:UIPanGestureRecognizer){
+        
+        if sender.state == UIGestureRecognizerState.Ended {
+            if topMargin.constant >= 50 + 150 {
+                topMargin.constant = self.view.frame.height + 10
+                UIView.animateWithDuration(0.5, animations: {
+                        self.view.layoutIfNeeded()
+                        self.blur.alpha = 0
+                    }, completion: { _ in
+                        self.dismissViewControllerAnimated(true, completion: nil)
+                })
+                
+            }
+            else{
+            topMargin.constant = 50
+            UIView.animateWithDuration(0.5, animations: {
+                self.view.layoutIfNeeded()
+                self.blur.alpha = 0.9
+            })
+            }
+            return
+        }
+        
+        
+        
+        let translation = sender.translationInView(imgHeader)
+        let verticalMovement = translation.y / imgHeader.bounds.height
+        let downwardMovement = fmaxf(Float(verticalMovement), 0.0)
+        let downwardMovementPercent = fminf(downwardMovement, 1.0)
+        let progress = CGFloat(downwardMovementPercent)
+        
+        topMargin.constant = 50 + progress * 300
+        blur.alpha = 0.9 - progress * 0.5
+    }
+    
+    override func viewDidLayoutSubviews() {
+        btnDelete.roundCorners([.BottomLeft,.BottomRight], radius: 10)
+        imgHeader.roundCorners([.TopLeft , .TopRight], radius: 10)
     }
     
     func edit(sender: UITapGestureRecognizer) {
