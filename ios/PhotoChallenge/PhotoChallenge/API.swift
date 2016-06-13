@@ -81,6 +81,25 @@ class API {
         }
     }
     
+    static func getNotifications(success: (([Notification]) -> ())? , error : ((NSError) -> ())?) {
+        Alamofire.request(.GET ,Endpoints.notifications , headers:self.headers)
+            .validate()
+            .responseJSON {
+                response in
+                switch(response.result){
+                case .Success(_):
+                    if let array = JSON(response.result.value!).array {
+                        let notifcations = array.map({Notification(json: $0)})
+                        return success!(notifcations)
+                    }
+                case .Failure(let _error):
+                    if let error = error {
+                        error(_error)
+                    }
+                }
+        }
+    }
+    
     static func addFriend(username : String  ,success: ((Friend) -> ())? , error : ((NSError) -> ())? ) {
         Alamofire.request(.POST , Endpoints.friends ,
                           headers:self.headers,

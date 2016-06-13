@@ -1,3 +1,4 @@
+import datetime
 import uuid
 from django.conf import settings
 from django.db.models.signals import post_save
@@ -54,3 +55,16 @@ class Friendship(models.Model):
     id = models.AutoField(primary_key=True)
     fromUser = models.ForeignKey(User , related_name="friendship_from")
     toUser = models.ForeignKey(User , related_name="friendship_to")
+
+
+class NotificationType:
+    follow = 0
+    uploaded = 1
+
+
+class Notification(models.Model):
+    id = models.AutoField(primary_key=True)
+    user = models.ForeignKey(User)
+    type = models.IntegerField(default=0)
+    payload = models.TextField()
+    timestamp = models.DateTimeField(auto_now_add=True,null=True)

@@ -5,7 +5,7 @@ from rest_framework.permissions import IsAuthenticated
 from rest_framework.views import APIView
 
 from PhotoChallengeCore.forms import SignupForm
-from PhotoChallengeCore.models import Category, Challenge, Submission, Friendship
+from PhotoChallengeCore.models import Category, Challenge, Submission, Friendship, Notification, NotificationType
 from django.contrib.auth.models import User
 from django.http import HttpResponse
 from django.views.decorators.csrf import csrf_exempt
@@ -40,7 +40,6 @@ class CategoryView(APIView):
     def get(self, request):
         return HttpResponse(json.dumps([c.to_json() for c in Category.objects.all()]), status=200)
 
-
 class ChallengeView(APIView):
     authentication_classes = (TokenAuthentication,)
     permission_classes = (IsAuthenticated,)
@@ -59,6 +58,8 @@ class ChallengeView(APIView):
             sub.file.delete()
         sub.file = file
         sub.save()
+        for user in [f.fromUser for f in Friendship.objects.filter(toUser=request.user)]:
+            Notification.objects.create(user=user, type = NotificationType.uploaded, payload=str(sub.id))
         return HttpResponse(status=200)
 
 
@@ -84,6 +85,10 @@ class FriendshipView(APIView):
                         "name" : f.toUser.username,
                         "stars" : Submission.objects.filter(user=f.toUser).count()
                    } for f in friendships]
+        friends.append({
+            "name": request.user.username,
+            "stars": Submission.objects.filter(user=request.user).count()
+        })
         return HttpResponse(json.dumps(friends))
 
     def post(self, request):
@@ -96,10 +101,22 @@ class FriendshipView(APIView):
                         "name" : p.username,
                         "stars" : Submission.objects.filter(user=p).count()
                    }
-            return  HttpResponse(json.dumps(f) , status=200)
+            Notification.objects.create(user=p, type=NotificationType.follow, payload=request.user.username)
+            return HttpResponse(json.dumps(f) , status=200)
         else:
             return HttpResponse(status=404)
 
+
+class NotificationView(APIView):
+    authentication_classes = (TokenAuthentication,)
+    permission_classes = (IsAuthenticated,)
+
+    def get(self, request):
+        subs = [{
+                    "type" : s.type,
+                    "payload" : s.payload
+                } for s in Notification.objects.filter(user=request.user)]
+        return HttpResponse(json.dumps(subs), status=200)
 
 def reset_data():
     Category.objects.all().delete()

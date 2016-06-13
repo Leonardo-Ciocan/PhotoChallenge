@@ -85,4 +85,5 @@ class FriendsViewController: UIViewController , UITableViewDelegate , UITableVie
     override func preferredStatusBarStyle() -> UIStatusBarStyle {
         return .LightContent
     }
+    
 }
