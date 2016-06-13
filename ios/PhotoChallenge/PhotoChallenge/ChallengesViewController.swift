@@ -11,11 +11,14 @@ import UIKit
 class ChallengesViewController: UIViewController ,UICollectionViewDelegate , UICollectionViewDataSource ,UICollectionViewDelegateFlowLayout {
     
     @IBOutlet weak var collectionView: UICollectionView!
+    @IBOutlet weak var categoryHeader: CategoryHeader!
+    
     
     var challenges : [ String : [Challenge]] = [:]
     var sections : [String] = []
-    
     var category : Category?
+    
+    var selectedChallenge : Challenge?
     
     func setCategory(value : Category?){
         guard value != nil else {return}
@@ -32,7 +35,7 @@ class ChallengesViewController: UIViewController ,UICollectionViewDelegate , UIC
     }
 
     
-    @IBOutlet weak var categoryHeader: CategoryHeader!
+    
     
     override func viewDidLoad() {
         self.collectionView.registerNib(UINib(nibName: "ChallengeCell", bundle: nil), forCellWithReuseIdentifier: "ChallengeCell")
@@ -93,5 +96,17 @@ class ChallengesViewController: UIViewController ,UICollectionViewDelegate , UIC
     }
     func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
         return CGSize(width: self.view.frame.width, height: 50)
+    }
+    
+    func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
+        selectedChallenge = challenges[sections[indexPath.section]]![indexPath.row]
+        self.performSegueWithIdentifier("toDetail", sender: self)
+    }
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if segue.identifier == "toDetail" {
+            (segue.destinationViewController as! ChallengeDetailViewController).category = category
+            (segue.destinationViewController as! ChallengeDetailViewController).challenge = selectedChallenge
+        }
     }
 }

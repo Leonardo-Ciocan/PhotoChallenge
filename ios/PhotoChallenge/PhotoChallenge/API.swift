@@ -63,4 +63,23 @@ class API {
         }
     }
     
+    //load per cell , reloaddata on acquired
+    
+    static func submitSubmission(fileData:NSData, challengeID : String , success: (() -> ())? , error : ((NSError) -> ())?) {
+        Alamofire.upload(.POST, Endpoints.challenges + challengeID, headers: self.headers, multipartFormData: {
+            multipartFormData in
+            
+            multipartFormData.appendBodyPart(data: fileData, name: "file", fileName: "file.png", mimeType: "image/jpeg")
+            }, encodingCompletion: { encodingResult in
+                switch encodingResult {
+                case .Success(let upload, _, _):
+                    upload.response { response in
+                    }
+                case .Failure(let encodingError):
+                    print(encodingError)
+                }
+            }
+        )
+    }
+    
 }

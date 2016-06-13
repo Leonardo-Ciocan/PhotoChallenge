@@ -10,6 +10,7 @@ class Category{
     var name = ""
     var id = "0"
     var stars = 0
+    var hasSubmission = false
     var color = UIColor.whiteColor()
     
     init(id:String,name:String,stars:Int,color:UIColor){
@@ -34,6 +35,10 @@ class Category{
         
         if let color = json["color"].string {
             self.color = stringToColor(color)
+        }
+        
+        if let hasSub = json["hasSubmission"].bool {
+            self.hasSubmission = hasSub
         }
     }
     

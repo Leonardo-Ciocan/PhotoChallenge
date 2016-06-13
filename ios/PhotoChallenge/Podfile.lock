@@ -3,12 +3,14 @@ PODS:
   - DynamicColor (2.4.0)
   - SkyFloatingLabelTextField (1.2.1)
   - SwiftyJSON (2.3.2)
+  - TOCropViewController (2.0.1)
 
 DEPENDENCIES:
   - Alamofire (~> 3.4)
   - DynamicColor (~> 2.4.0)
   - SkyFloatingLabelTextField (~> 1.0)
   - SwiftyJSON (from `https://github.com/SwiftyJSON/SwiftyJSON.git`)
+  - TOCropViewController
 
 EXTERNAL SOURCES:
   SwiftyJSON:
@@ -24,5 +26,6 @@ SPEC CHECKSUMS:
   DynamicColor: 2f3fd61053684667bad9f03045dcf9a2a5a007ea
   SkyFloatingLabelTextField: 3f6610aded18e778df5cfab3b9e12a11b3e014e9
   SwiftyJSON: 04ccea08915aa0109039157c7974cf0298da292a
+  TOCropViewController: feb27de1698ae5b8198fab1f70face368742f950
 
 COCOAPODS: 0.39.0

@@ -25,5 +25,6 @@ urlpatterns = [
     url(r'^token/', views.obtain_auth_token),
     url(r'^categories/', PhotoChallengeCore.views.CategoryView.as_view()),
     url(r'^challenges/([0-9]+)', PhotoChallengeCore.views.ChallengeView.as_view()),
+    url(r'^image/([0-9]+)', PhotoChallengeCore.views.SubmissionImage.as_view()),
 
 ]

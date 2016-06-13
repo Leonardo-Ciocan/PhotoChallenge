@@ -25,7 +25,7 @@
                     <nil key="highlightedColor"/>
                 </label>
                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="star-on" translatesAutoresizingMaskIntoConstraints="NO" id="0hU-0G-ufr">
-                    <rect key="frame" x="562" y="285" width="30" height="30"/>
+                    <rect key="frame" x="550" y="285" width="30" height="30"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="30" id="D9b-GC-quF"/>
                         <constraint firstAttribute="width" secondItem="0hU-0G-ufr" secondAttribute="height" multiplier="1:1" id="mBR-dk-vQ2"/>
@@ -40,7 +40,7 @@
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <constraints>
-                <constraint firstAttribute="trailing" secondItem="0hU-0G-ufr" secondAttribute="trailing" constant="8" id="1aX-io-D72"/>
+                <constraint firstAttribute="trailing" secondItem="0hU-0G-ufr" secondAttribute="trailing" constant="20" id="1aX-io-D72"/>
                 <constraint firstItem="0hU-0G-ufr" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="FDQ-VV-0p4"/>
                 <constraint firstItem="m1G-nr-HZO" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="20" id="MU4-ck-dAw"/>
                 <constraint firstItem="5wE-VE-W5o" firstAttribute="centerY" secondItem="0hU-0G-ufr" secondAttribute="centerY" id="Txk-Mh-HNh"/>

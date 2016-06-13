@@ -29,6 +29,16 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
+		<key>TOCropViewController-TOCropViewControllerBundle.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>TOCropViewController.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
@@ -37,7 +47,7 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>2C73945F908C7DE939C15CEAE00CB3EC</key>
+		<key>3384B3B8464D841C2DC539CBB940B116</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -47,12 +57,22 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>876ECADB81EFE0D72B6D58B2458AE894</key>
+		<key>87AE34568D12F9B5908392290F56924C</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>A0E52B2E531C30D70585C5767CE79271</key>
+		<key>A14F067A925B995AFD5192C2C3ABA92E</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>D43549C9DB9016D1AE334B7B34D6446E</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>D6632BCEB4258258D7EAA2076C28B4CA</key>
 		<dict>
 			<key>primary</key>
 			<true/>
