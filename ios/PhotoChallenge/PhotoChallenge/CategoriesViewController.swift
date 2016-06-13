@@ -44,10 +44,6 @@ class CategoriesViewController: UIViewController , UICollectionViewDelegate , UI
         
     }
     
-    override func viewDidDisappear(animated: Bool) {
-        self.tabBarController?.tabBar.tintColor  = UIColor.blackColor()
-    }
-    
     func numberOfSectionsInCollectionView(collectionView: UICollectionView) -> Int {
         return 1
     }

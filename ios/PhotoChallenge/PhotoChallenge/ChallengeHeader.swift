@@ -40,7 +40,6 @@ class ChallengeHeader: UICollectionReusableView {
         let view = nib.instantiateWithOwner(self, options: nil)[0] as! UIView
         
         imgStar.image = imgStar.image?.imageWithRenderingMode(.AlwaysTemplate)
-        
         return view
     }
     

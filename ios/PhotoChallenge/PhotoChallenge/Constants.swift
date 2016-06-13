@@ -3,4 +3,5 @@ class Endpoints{
     static var token = Endpoints.root + "token/"
     static var categories = Endpoints.root + "categories/"
     static var challenges = Endpoints.root + "challenges/"
+    static var image = Endpoints.root + "image/"
 }

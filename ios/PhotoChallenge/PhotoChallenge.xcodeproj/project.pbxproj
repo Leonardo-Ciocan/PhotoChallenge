@@ -11,6 +11,9 @@
 		B310E7201D0BA05E00D848E3 /* ChallengeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B310E71F1D0BA05E00D848E3 /* ChallengeCell.swift */; };
 		B310E7221D0BB1A500D848E3 /* CategoryHeader.xib in Resources */ = {isa = PBXBuildFile; fileRef = B310E7211D0BB1A500D848E3 /* CategoryHeader.xib */; };
 		B310E7241D0BB1CA00D848E3 /* CategoryHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = B310E7231D0BB1CA00D848E3 /* CategoryHeader.swift */; };
+		B310EEF31D0EACB9009FAC4B /* FriendsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B310EEF21D0EACB9009FAC4B /* FriendsViewController.swift */; };
+		B310EEF61D0EB14D009FAC4B /* TableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B310EEF41D0EB14D009FAC4B /* TableCell.swift */; };
+		B310EEF71D0EB14D009FAC4B /* TableCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B310EEF51D0EB14D009FAC4B /* TableCell.xib */; };
 		B38EF1461D0D167B0079B62B /* Submission.swift in Sources */ = {isa = PBXBuildFile; fileRef = B38EF1451D0D167B0079B62B /* Submission.swift */; };
 		B38EF1481D0D20500079B62B /* MainTabController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B38EF1471D0D20500079B62B /* MainTabController.swift */; };
 		B38EF14A1D0D2DD00079B62B /* ChallengeHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = B38EF1491D0D2DD00079B62B /* ChallengeHeader.swift */; };
@@ -41,6 +44,9 @@
 		B310E71F1D0BA05E00D848E3 /* ChallengeCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChallengeCell.swift; sourceTree = "<group>"; };
 		B310E7211D0BB1A500D848E3 /* CategoryHeader.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CategoryHeader.xib; sourceTree = "<group>"; };
 		B310E7231D0BB1CA00D848E3 /* CategoryHeader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategoryHeader.swift; sourceTree = "<group>"; };
+		B310EEF21D0EACB9009FAC4B /* FriendsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FriendsViewController.swift; sourceTree = "<group>"; };
+		B310EEF41D0EB14D009FAC4B /* TableCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableCell.swift; sourceTree = "<group>"; };
+		B310EEF51D0EB14D009FAC4B /* TableCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TableCell.xib; sourceTree = "<group>"; };
 		B38EF1451D0D167B0079B62B /* Submission.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Submission.swift; sourceTree = "<group>"; };
 		B38EF1471D0D20500079B62B /* MainTabController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainTabController.swift; sourceTree = "<group>"; };
 		B38EF1491D0D2DD00079B62B /* ChallengeHeader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChallengeHeader.swift; sourceTree = "<group>"; };
@@ -136,6 +142,9 @@
 				B38EF1491D0D2DD00079B62B /* ChallengeHeader.swift */,
 				B38EF14B1D0D2DEA0079B62B /* ChallengeHeader.xib */,
 				B3C2AC261D0DFA1D00DFA4D8 /* ChallengeDetailViewController.swift */,
+				B310EEF21D0EACB9009FAC4B /* FriendsViewController.swift */,
+				B310EEF41D0EB14D009FAC4B /* TableCell.swift */,
+				B310EEF51D0EB14D009FAC4B /* TableCell.xib */,
 			);
 			path = PhotoChallenge;
 			sourceTree = "<group>";
@@ -216,6 +225,7 @@
 				B310E7221D0BB1A500D848E3 /* CategoryHeader.xib in Resources */,
 				B3F214EA1D09962700C3D8E9 /* CategoryCell.xib in Resources */,
 				B310E71E1D0B9C0100D848E3 /* ChallengeCell.xib in Resources */,
+				B310EEF71D0EB14D009FAC4B /* TableCell.xib in Resources */,
 				B3F214D31D09789D00C3D8E9 /* LaunchScreen.storyboard in Resources */,
 				B3F214D01D09789D00C3D8E9 /* Assets.xcassets in Resources */,
 				B3F214DB1D0978AD00C3D8E9 /* Podfile in Resources */,
@@ -278,6 +288,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B310EEF31D0EACB9009FAC4B /* FriendsViewController.swift in Sources */,
 				B3F214C71D09789D00C3D8E9 /* AppDelegate.swift in Sources */,
 				B3F214DF1D097BBE00C3D8E9 /* AuthViewController.swift in Sources */,
 				B3F214DD1D0978EE00C3D8E9 /* API.swift in Sources */,
@@ -292,6 +303,7 @@
 				B310E7241D0BB1CA00D848E3 /* CategoryHeader.swift in Sources */,
 				B3C2AC271D0DFA1D00DFA4D8 /* ChallengeDetailViewController.swift in Sources */,
 				B3F214E21D097C5700C3D8E9 /* Category.swift in Sources */,
+				B310EEF61D0EB14D009FAC4B /* TableCell.swift in Sources */,
 				B3F214EC1D09A30600C3D8E9 /* Challenge.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

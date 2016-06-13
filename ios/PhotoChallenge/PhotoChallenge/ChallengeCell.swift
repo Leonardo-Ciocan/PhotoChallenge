@@ -9,6 +9,9 @@ class ChallengeCell: UICollectionViewCell {
         imgStar.image = imgStar.image?.imageWithRenderingMode(.AlwaysTemplate)
     }
     
+    @IBOutlet weak var blurView: UIVisualEffectView!
+    @IBOutlet weak var titleContainer: UIView!
+    @IBOutlet weak var image: UIImageView!
     @IBOutlet weak var innerView: UIView!
     @IBOutlet weak var txtName: UILabel!
     func loadData(challenge:Challenge , category : Category){
@@ -30,5 +33,16 @@ class ChallengeCell: UICollectionViewCell {
         //innerView.layer.masksToBounds = true
         txtName.text = challenge.name
         //txtName.textColor = category.color.lighterColor()
+        
+        if(challenge.hasSubmission){
+            if let img = challenge.submissionImage {
+                self.image.image = img
+            }
+            blurView.hidden = false
+        }
+        else{
+            image.image = nil
+            blurView.hidden = true
+        }
     }
 }

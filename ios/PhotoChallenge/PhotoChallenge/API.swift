@@ -63,6 +63,25 @@ class API {
         }
     }
     
+    static func getSubmissionImageForChallenge(item:Challenge , success: ((UIImage) -> ())? , error : ((NSError) -> ())?) {
+        Alamofire.request(.GET , Endpoints.image + item.id , headers:self.headers)
+            .validate()
+            .responseData {
+                response in
+                switch(response.result){
+                case .Success(_):
+                    item.submissionImage = UIImage(data: response.result.value!)!
+                    success!(item.submissionImage!)
+                case .Failure(let _error):
+                    if let error = error {
+                        error(_error)
+                    }
+                }
+        }
+    }
+    
+    
+    
     //load per cell , reloaddata on acquired
     
     static func submitSubmission(fileData:NSData, challengeID : String , success: (() -> ())? , error : ((NSError) -> ())?) {

@@ -30,11 +30,14 @@ class ChallengesViewController: UIViewController ,UICollectionViewDelegate , UIC
                 challenges[item.tag] = [item]
                 sections.append(item.tag)
             }
+            if(item.hasSubmission){
+            API.getSubmissionImageForChallenge(item , success: { img in
+                    self.collectionView.reloadData()
+                }, error: nil)
+            }
         }
         self.category = value
     }
-
-    
     
     
     override func viewDidLoad() {
@@ -45,6 +48,10 @@ class ChallengesViewController: UIViewController ,UICollectionViewDelegate , UIC
         collectionView.dataSource = self
         categoryHeader.hidden = true
         self.navigationItem.title = category?.name
+    }
+    
+    override func viewDidAppear(animated: Bool) {
+        self.collectionView.reloadData()
     }
     
     func numberOfSectionsInCollectionView(collectionView: UICollectionView) -> Int {
@@ -88,6 +95,9 @@ class ChallengesViewController: UIViewController ,UICollectionViewDelegate , UIC
         case UICollectionElementKindSectionHeader:
             let header = collectionView.dequeueReusableSupplementaryViewOfKind(kind, withReuseIdentifier: "ChallengeHeader", forIndexPath: indexPath) as! ChallengeHeader
             header.txtName.text = sections[indexPath.section].uppercaseString
+            let s : String = sections[indexPath.section]
+            let cs = challenges[s]!
+            header.txtStar.text = String(cs.filter({$0.hasSubmission}).count)
             header.loadData(category!)
             return header
         default:

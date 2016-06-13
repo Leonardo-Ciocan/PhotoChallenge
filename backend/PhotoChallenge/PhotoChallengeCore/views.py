@@ -46,11 +46,11 @@ class ChallengeView(APIView):
     permission_classes = (IsAuthenticated,)
 
     def get(self, request, category_id):
-        challenges = json.dumps([c.to_json() for c in Challenge.objects.filter(category__id=category_id)])
+        challenges = [c.to_json() for c in Challenge.objects.filter(category__id=category_id)]
         for c in challenges:
-            hasSub = Submission.objects.filter(category__id=category_id , user=request.user)
+            hasSub = Submission.objects.filter(challenge__id = c["id"] , user=request.user).count() > 0
             c["hasSubmission"] = hasSub
-        return HttpResponse(challenges, status=200)
+        return HttpResponse(json.dumps(challenges), status=200)
 
     def post(self, request, challenge_id):
         file = request.FILES["file"]
@@ -67,9 +67,9 @@ class SubmissionImage(APIView):
     permission_classes = (IsAuthenticated,)
 
     def get(self, request, challenge_id):
-        sub = Submission.objects.get(challenge=Challenge.objects.get(id=challenge_id),user=request.user)
-        if sub is not None:
-            response = HttpResponse(sub.file , content_type="image/jpeg")
+        sub = Submission.objects.filter(challenge=Challenge.objects.get(id=challenge_id),user=request.user)
+        if sub.count() > 0:
+            response = HttpResponse(sub[0].file , content_type="image/jpeg")
             return response
         return HttpResponse(status=404)
 

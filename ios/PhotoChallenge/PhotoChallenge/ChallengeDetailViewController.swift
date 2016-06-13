@@ -41,8 +41,17 @@ class ChallengeDetailViewController: UIViewController , UIImagePickerControllerD
         imgHeader.layer.masksToBounds = false
         imgHeader.clipsToBounds = false
         
-        imgHeader.image = UIImage(named:"star-missing")?.imageWithRenderingMode(.AlwaysTemplate)
+        if challenge!.hasSubmission && challenge!.submissionImage != nil {
+                imgHeader.image = challenge?.submissionImage!
+        }
+        else{
+            imgHeader.image = UIImage(named:"star-missing")?.imageWithRenderingMode(.AlwaysTemplate)
+        }
+        
+        
         imgHeader.tintColor = category?.color
+        
+        
         
         let tapped = UITapGestureRecognizer(target: self, action: #selector(edit(_:)))
         btnShoot.addGestureRecognizer(tapped)
@@ -95,12 +104,13 @@ class ChallengeDetailViewController: UIViewController , UIImagePickerControllerD
         cropViewController.dismissAnimatedFromParentViewController(self, toFrame: self.imgHeader.frame, completion: {() -> Void in
             self.imgHeader.alpha = 1
             self.setPhoto(img)
-            
         })
     }
     
     func setPhoto(img: UIImage){
         API.submitSubmission(UIImageJPEGRepresentation(resizeImage(img, newHeight: 500), 100)!, challengeID: (challenge?.id)!, success: nil, error: nil)
+        challenge?.hasSubmission = true
+        challenge?.submissionImage = img
     }
     
     func resizeImage(image: UIImage, newHeight: CGFloat) -> UIImage {

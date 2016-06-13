@@ -4,15 +4,19 @@ import SwiftyJSON
 class Challenge{
     var name = ""
     var tag = ""
-    var id = "0"
+    var id = ""
+    var hasSubmission : Bool = false
+    var submissionImage : UIImage?
+    
     
     init(name:String){
         self.name = name
     }
     
     init(json:JSON){
-        if let id = json["id"].string {
-            self.id = id
+        print(json)
+        if let id = json["id"].int {
+            self.id = String(id)
         }
 
         if let name = json["name"].string {
@@ -21,6 +25,10 @@ class Challenge{
         
         if let tag = json["tag"].string {
             self.tag = tag
+        }
+        
+        if let hasSub = json["hasSubmission"].bool {
+            self.hasSubmission = hasSub
         }
     }
     

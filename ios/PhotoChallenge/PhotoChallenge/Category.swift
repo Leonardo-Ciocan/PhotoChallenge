@@ -8,9 +8,8 @@ class Category{
     var challenges : [Challenge] = []
     
     var name = ""
-    var id = "0"
+    var id = ""
     var stars = 0
-    var hasSubmission = false
     var color = UIColor.whiteColor()
     
     init(id:String,name:String,stars:Int,color:UIColor){
@@ -37,9 +36,6 @@ class Category{
             self.color = stringToColor(color)
         }
         
-        if let hasSub = json["hasSubmission"].bool {
-            self.hasSubmission = hasSub
-        }
     }
     
     func stringToColor(color:String) -> UIColor {
