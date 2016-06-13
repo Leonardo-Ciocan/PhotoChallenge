@@ -48,3 +48,9 @@ class Submission(models.Model):
     challenge = models.ForeignKey(Challenge , default=None)
     file = models.FileField(upload_to=get_file_path,
                             null=True, blank=True, default=None)
+
+
+class Friendship(models.Model):
+    id = models.AutoField(primary_key=True)
+    fromUser = models.ForeignKey(User , related_name="friendship_from")
+    toUser = models.ForeignKey(User , related_name="friendship_to")

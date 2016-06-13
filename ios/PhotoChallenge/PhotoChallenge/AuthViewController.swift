@@ -13,6 +13,7 @@ class AuthViewController: UIViewController {
     @IBOutlet var password : UITextField?
     
     override func viewDidAppear(animated: Bool) {
+        //NSUserDefaults.standardUserDefaults().removeObjectForKey("token")
         self.view.hidden = true
         if NSUserDefaults.standardUserDefaults().stringForKey("token") != nil{
             self.performSegueWithIdentifier("toPage", sender: self)
@@ -27,6 +28,7 @@ class AuthViewController: UIViewController {
         API.login((username?.text)!, password: (password?.text)!, completion: { token in
             NSUserDefaults.standardUserDefaults().setValue(token, forKey: "token")
             NSUserDefaults.standardUserDefaults().synchronize()
+            self.performSegueWithIdentifier("toPage", sender: self)
         })
     }
 }

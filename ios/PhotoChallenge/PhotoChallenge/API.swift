@@ -63,6 +63,39 @@ class API {
         }
     }
     
+    static func getFriends(success: (([Friend]) -> ())? , error : ((NSError) -> ())?) {
+        Alamofire.request(.GET ,Endpoints.friends , headers:self.headers)
+            .responseJSON {
+                response in
+                switch(response.result){
+                case .Success(_):
+                    if let array = JSON(response.result.value!).array {
+                        let friends = array.map({Friend(json: $0)})
+                        return success!(friends)
+                    }
+                case .Failure(let _error):
+                    if let error = error {
+                        error(_error)
+                    }
+                }
+        }
+    }
+    
+    static func addFriend(username : String  ,success: ((Friend) -> ())? , error : ((NSError) -> ())? ) {
+        Alamofire.request(.POST , Endpoints.friends ,
+                          headers:self.headers,
+            parameters: ["username":username])
+            .validate()
+            .responseJSON{ response in
+                switch(response.result){
+                case .Success(_):
+                    success!(Friend(json: JSON(response.result.value!)))
+                case .Failure(let error):
+                    print("token-error:"+error.localizedDescription)
+                }
+        }
+    }
+    
     static func getSubmissionImageForChallenge(item:Challenge , success: ((UIImage) -> ())? , error : ((NSError) -> ())?) {
         Alamofire.request(.GET , Endpoints.image + item.id , headers:self.headers)
             .validate()

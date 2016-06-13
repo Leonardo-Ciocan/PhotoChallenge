@@ -4,4 +4,5 @@ class Endpoints{
     static var categories = Endpoints.root + "categories/"
     static var challenges = Endpoints.root + "challenges/"
     static var image = Endpoints.root + "image/"
+    static var friends = Endpoints.root + "friends/"
 }

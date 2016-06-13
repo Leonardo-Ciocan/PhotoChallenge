@@ -5,7 +5,7 @@ from rest_framework.permissions import IsAuthenticated
 from rest_framework.views import APIView
 
 from PhotoChallengeCore.forms import SignupForm
-from PhotoChallengeCore.models import Category, Challenge, Submission
+from PhotoChallengeCore.models import Category, Challenge, Submission, Friendship
 from django.contrib.auth.models import User
 from django.http import HttpResponse
 from django.views.decorators.csrf import csrf_exempt
@@ -72,6 +72,34 @@ class SubmissionImage(APIView):
             response = HttpResponse(sub[0].file , content_type="image/jpeg")
             return response
         return HttpResponse(status=404)
+
+
+class FriendshipView(APIView):
+    authentication_classes = (TokenAuthentication,)
+    permission_classes = (IsAuthenticated,)
+
+    def get(self, request):
+        friendships = Friendship.objects.filter(fromUser=request.user)
+        friends = [{
+                        "name" : f.toUser.username,
+                        "stars" : Submission.objects.filter(user=f.toUser).count()
+                   } for f in friendships]
+        return HttpResponse(json.dumps(friends))
+
+    def post(self, request):
+        username = request.POST["username"]
+        person = User.objects.filter(username=username)
+        if person.count() > 0:
+            p = person[0]
+            Friendship.objects.get_or_create(fromUser=request.user , toUser=p)
+            f = {
+                        "name" : p.username,
+                        "stars" : Submission.objects.filter(user=p).count()
+                   }
+            return  HttpResponse(json.dumps(f) , status=200)
+        else:
+            return HttpResponse(status=404)
+
 
 def reset_data():
     Category.objects.all().delete()

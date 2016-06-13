@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10116" systemVersion="15G7b" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="6yl-BM-wr0">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10116" systemVersion="15G7b" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="ei3-sF-Ffa">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
@@ -359,7 +359,7 @@
                 <navigationController id="iQl-Pt-bN2" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Friends" image="friends" id="MpX-lP-JEE"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina55"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="xBr-a3-j9o">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" shadowImage="transparent" backIndicatorImage="transparent" id="xBr-a3-j9o">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <textAttributes key="titleTextAttributes">
@@ -387,33 +387,36 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="BR5-O8-aYj">
-                                <rect key="frame" x="0.0" y="64" width="414" height="623"/>
+                                <rect key="frame" x="0.0" y="115" width="414" height="572"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </tableView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Bq2-BW-hOY">
                                 <rect key="frame" x="0.0" y="64" width="414" height="51"/>
                                 <subviews>
-                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="fAn-PK-eOT">
-                                        <rect key="frame" x="8" y="11" width="340" height="30"/>
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Add a friend" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="fAn-PK-eOT">
+                                        <rect key="frame" x="20" y="11" width="328" height="30"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <textInputTraits key="textInputTraits"/>
+                                        <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no"/>
                                     </textField>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ALA-6i-qSA">
                                         <rect key="frame" x="356" y="11" width="50" height="30"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="50" id="I7a-OV-Znb"/>
                                         </constraints>
-                                        <state key="normal" title="Add"/>
+                                        <state key="normal" title="Add">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
                                         <connections>
                                             <action selector="addfriend:" destination="6yl-BM-wr0" eventType="touchUpInside" id="DKs-8O-mnH"/>
                                         </connections>
                                     </button>
                                 </subviews>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstItem="ALA-6i-qSA" firstAttribute="centerY" secondItem="Bq2-BW-hOY" secondAttribute="centerY" id="BVX-E3-Ggq"/>
                                     <constraint firstItem="fAn-PK-eOT" firstAttribute="centerY" secondItem="Bq2-BW-hOY" secondAttribute="centerY" id="D7Z-kV-YZx"/>
-                                    <constraint firstItem="fAn-PK-eOT" firstAttribute="leading" secondItem="Bq2-BW-hOY" secondAttribute="leading" constant="8" id="EnE-zY-6m9"/>
+                                    <constraint firstItem="fAn-PK-eOT" firstAttribute="leading" secondItem="Bq2-BW-hOY" secondAttribute="leading" constant="20" id="EnE-zY-6m9"/>
                                     <constraint firstAttribute="height" constant="51" id="NJR-e1-4Ns"/>
                                     <constraint firstItem="ALA-6i-qSA" firstAttribute="leading" secondItem="fAn-PK-eOT" secondAttribute="trailing" constant="8" id="c8C-gu-3zx"/>
                                     <constraint firstAttribute="trailing" secondItem="ALA-6i-qSA" secondAttribute="trailing" constant="8" id="k2Q-0f-wI7"/>
@@ -430,7 +433,7 @@
                         <constraints>
                             <constraint firstItem="Bq2-BW-hOY" firstAttribute="leading" secondItem="xKe-Bz-cB8" secondAttribute="leadingMargin" constant="-20" id="2sR-dQ-hKI"/>
                             <constraint firstItem="Bq2-BW-hOY" firstAttribute="top" secondItem="NTI-lm-S9B" secondAttribute="bottom" id="6dL-mS-s9L"/>
-                            <constraint firstItem="BR5-O8-aYj" firstAttribute="top" secondItem="NTI-lm-S9B" secondAttribute="bottom" id="7MR-SJ-j50"/>
+                            <constraint firstItem="BR5-O8-aYj" firstAttribute="top" secondItem="NTI-lm-S9B" secondAttribute="bottom" constant="51" id="7MR-SJ-j50"/>
                             <constraint firstAttribute="trailing" secondItem="BR5-O8-aYj" secondAttribute="trailing" id="DPG-CN-scs"/>
                             <constraint firstItem="BR5-O8-aYj" firstAttribute="leading" secondItem="xKe-Bz-cB8" secondAttribute="leading" id="beu-dc-K4a"/>
                             <constraint firstItem="BR5-O8-aYj" firstAttribute="bottom" secondItem="6PS-KV-vhG" secondAttribute="top" id="iQ4-1v-Y42"/>
@@ -438,10 +441,15 @@
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Friends" image="friends" id="eOn-kb-nZS"/>
-                    <navigationItem key="navigationItem" id="Hyh-U5-VgR"/>
+                    <navigationItem key="navigationItem" id="Hyh-U5-VgR">
+                        <barButtonItem key="leftBarButtonItem" title="QR code" id="z4S-jp-uBX"/>
+                    </navigationItem>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina55"/>
                     <connections>
                         <outlet property="addTextBox" destination="fAn-PK-eOT" id="bkN-gA-Jpt"/>
+                        <outlet property="addView" destination="Bq2-BW-hOY" id="NrI-PE-7l9"/>
+                        <outlet property="btnAdd" destination="ALA-6i-qSA" id="kJK-Le-eyk"/>
+                        <outlet property="tableView" destination="BR5-O8-aYj" id="CvP-sG-cMu"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="c6j-CK-w1j" userLabel="First Responder" sceneMemberID="firstResponder"/>
