@@ -36,6 +36,9 @@ class ChallengeDetailViewController: UIViewController , UIImagePickerControllerD
     @IBOutlet weak var topMargin: NSLayoutConstraint!
     @IBOutlet weak var lblTakePicture: UILabel!
     @IBOutlet weak var imgHeader: UIImageView!
+    
+    var cellFrame : CGRect = CGRectZero
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -111,12 +114,17 @@ class ChallengeDetailViewController: UIViewController , UIImagePickerControllerD
         let pan = UIPanGestureRecognizer(target: self, action: #selector(panDown))
         imgHeader.addGestureRecognizer(pan)
         
-        
         blur.alpha = 0
         topMargin.constant = self.view.frame.height + 10
+        self.view.setNeedsLayout()
+        
+    }
+    
+    override func viewDidAppear(animated: Bool) {
+        topMargin.constant = 50
         UIView.animateWithDuration(0.8, animations: {
             self.view.layoutIfNeeded()
-            self.blur.alpha = 1
+            //self.blur.alpha = 1
         })
     }
     
@@ -127,7 +135,7 @@ class ChallengeDetailViewController: UIViewController , UIImagePickerControllerD
                 topMargin.constant = self.view.frame.height + 10
                 UIView.animateWithDuration(0.5, animations: {
                         self.view.layoutIfNeeded()
-                        self.blur.alpha = 0
+                        self.view.alpha = 0
                     }, completion: { _ in
                         self.dismissViewControllerAnimated(true, completion: nil)
                 })
@@ -137,7 +145,7 @@ class ChallengeDetailViewController: UIViewController , UIImagePickerControllerD
             topMargin.constant = 50
             UIView.animateWithDuration(0.5, animations: {
                 self.view.layoutIfNeeded()
-                self.blur.alpha = 0.9
+                self.view.alpha = 1
             })
             }
             return
@@ -151,8 +159,8 @@ class ChallengeDetailViewController: UIViewController , UIImagePickerControllerD
         let downwardMovementPercent = fminf(downwardMovement, 1.0)
         let progress = CGFloat(downwardMovementPercent)
         
-        topMargin.constant = 50 + progress * 300
-        blur.alpha = 0.9 - progress * 0.5
+        topMargin.constant = 50 + progress * 600
+        view.alpha = 0.9 - progress * 0.5
     }
     
     override func viewDidLayoutSubviews() {
