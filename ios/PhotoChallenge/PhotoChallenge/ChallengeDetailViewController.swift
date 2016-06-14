@@ -19,6 +19,7 @@ extension UIView {
 }
 class ChallengeDetailViewController: UIViewController , UIImagePickerControllerDelegate ,TOCropViewControllerDelegate , UINavigationControllerDelegate{
 
+    @IBOutlet weak var placeholder: UIImageView!
     @IBOutlet weak var shadowView: UIView!
     var category : Category?
     var challenge : Challenge?
@@ -37,7 +38,11 @@ class ChallengeDetailViewController: UIViewController , UIImagePickerControllerD
     @IBOutlet weak var lblTakePicture: UILabel!
     @IBOutlet weak var imgHeader: UIImageView!
     
-    var cellFrame : CGRect = CGRectZero
+    var fromCellFrame : CGRect = CGRectZero
+    
+    
+    var currentFrame : CGRect  = CGRectZero
+    var lastCell : UICollectionViewCell?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -63,6 +68,7 @@ class ChallengeDetailViewController: UIViewController , UIImagePickerControllerD
         
         if challenge!.hasSubmission && challenge!.submissionImage != nil {
                 imgHeader.image = challenge?.submissionImage!
+                placeholder.image = challenge?.submissionImage!
         }
         else{
             imgHeader.image = UIImage(named:"star-missing")?.imageWithRenderingMode(.AlwaysTemplate)
@@ -114,17 +120,32 @@ class ChallengeDetailViewController: UIViewController , UIImagePickerControllerD
         let pan = UIPanGestureRecognizer(target: self, action: #selector(panDown))
         imgHeader.addGestureRecognizer(pan)
         
-        blur.alpha = 0
-        topMargin.constant = self.view.frame.height + 10
-        self.view.setNeedsLayout()
+        //topMargin.constant = self.view.frame.height + 10
+       
         
+        imgHeader.alpha = 0
+        btnShoot.alpha = 0
+        btnDelete.alpha = 0
+        friendButton.alpha = 0
     }
     
     override func viewDidAppear(animated: Bool) {
-        topMargin.constant = 50
-        UIView.animateWithDuration(0.8, animations: {
-            self.view.layoutIfNeeded()
-            //self.blur.alpha = 1
+        
+        print(fromCellFrame.origin.y)
+        currentFrame = imgHeader.frame
+        placeholder.frame = self.fromCellFrame
+        
+        UIView.setAnimationCurve(.EaseOut)
+        UIView.animateWithDuration(0.5, animations: {
+            self.placeholder.frame = self.currentFrame
+            }, completion: { _ in
+                self.placeholder.hidden = true
+                self.imgHeader.alpha = 1
+                UIView.animateWithDuration(0.25, animations: {
+                    self.btnShoot.alpha = 1
+                    self.btnDelete.alpha = 1
+                    self.friendButton.alpha = 1
+                    }, completion: nil)
         })
     }
     
@@ -132,20 +153,27 @@ class ChallengeDetailViewController: UIViewController , UIImagePickerControllerD
         
         if sender.state == UIGestureRecognizerState.Ended {
             if topMargin.constant >= 50 + 150 {
-                topMargin.constant = self.view.frame.height + 10
-                UIView.animateWithDuration(0.5, animations: {
-                        self.view.layoutIfNeeded()
-                        self.view.alpha = 0
-                    }, completion: { _ in
-                        self.dismissViewControllerAnimated(true, completion: nil)
-                })
                 
+                imgHeader.alpha = 0
+                btnShoot.alpha = 0
+                btnDelete.alpha = 0
+                friendButton.alpha = 0
+                placeholder.frame = imgHeader.frame
+                self.placeholder.hidden = false
+                UIView.animateWithDuration(0.5, animations: {
+                        self.placeholder.frame = self.fromCellFrame
+                        self.blur.alpha = 0
+                    }, completion: { _ in
+                        self.dismissViewControllerAnimated(false, completion: {
+                            self.lastCell?.hidden = false
+                        })
+                })
             }
             else{
             topMargin.constant = 50
             UIView.animateWithDuration(0.5, animations: {
                 self.view.layoutIfNeeded()
-                self.view.alpha = 1
+                self.blur.alpha = 1
             })
             }
             return
@@ -160,7 +188,7 @@ class ChallengeDetailViewController: UIViewController , UIImagePickerControllerD
         let progress = CGFloat(downwardMovementPercent)
         
         topMargin.constant = 50 + progress * 600
-        view.alpha = 0.9 - progress * 0.5
+        blur.alpha = 0.9 - progress * 0.5
     }
     
     override func viewDidLayoutSubviews() {

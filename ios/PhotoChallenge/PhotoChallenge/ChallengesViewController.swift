@@ -62,9 +62,13 @@ class ChallengesViewController: UIViewController ,UICollectionViewDelegate , UIC
         return challenges[sections[section]]!.count
     }
     
+    
+    var fromCellFrame = CGRectZero
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCellWithReuseIdentifier("ChallengeCell", forIndexPath: indexPath) as! ChallengeCell
         cell.loadData(challenges[sections[indexPath.section]]![indexPath.row], category: self.category!)
+        
+        
         return cell
     }
     
@@ -108,8 +112,12 @@ class ChallengesViewController: UIViewController ,UICollectionViewDelegate , UIC
         return CGSize(width: self.view.frame.width, height: 50)
     }
     
+    var lastCell : UICollectionViewCell?
     func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
         selectedChallenge = challenges[sections[indexPath.section]]![indexPath.row]
+        fromCellFrame = collectionView.convertRect((collectionView.layoutAttributesForItemAtIndexPath(indexPath)?.frame)! , toView: self.view)
+        lastCell = collectionView.cellForItemAtIndexPath(indexPath)
+        lastCell?.hidden = true
         self.performSegueWithIdentifier("toDetail", sender: self)
     }
     
@@ -117,6 +125,8 @@ class ChallengesViewController: UIViewController ,UICollectionViewDelegate , UIC
         if segue.identifier == "toDetail" {
             (segue.destinationViewController as! ChallengeDetailViewController).category = category
             (segue.destinationViewController as! ChallengeDetailViewController).challenge = selectedChallenge
+            (segue.destinationViewController as! ChallengeDetailViewController).fromCellFrame = fromCellFrame
+            (segue.destinationViewController as! ChallengeDetailViewController).lastCell = lastCell
         }
     }
 }
