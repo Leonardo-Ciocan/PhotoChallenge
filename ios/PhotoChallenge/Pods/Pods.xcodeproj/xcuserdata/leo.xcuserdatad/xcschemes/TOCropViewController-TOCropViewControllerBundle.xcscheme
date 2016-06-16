@@ -13,11 +13,11 @@
             buildForProfiling = "YES"
             buildForArchiving = "YES">
             <BuildableReference
-               BuildableIdentifier = 'primary'
-               BlueprintIdentifier = '4C49BE88144B753250B58D6E'
-               BlueprintName = 'TOCropViewController-TOCropViewControllerBundle'
-               ReferencedContainer = 'container:Pods.xcodeproj'
-               BuildableName = 'TOCropViewControllerBundle.bundle'>
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "87AE34568D12F9B5908392290F56924C"
+               BlueprintName = "TOCropViewController-TOCropViewControllerBundle"
+               ReferencedContainer = "container:Pods.xcodeproj"
+               BuildableName = "TOCropViewControllerBundle.bundle">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>

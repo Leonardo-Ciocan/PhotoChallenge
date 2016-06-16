@@ -17,7 +17,6 @@ class API {
                 switch(response.result){
                 case .Success(_):
                     let json = JSON(response.result.value!)
-                    print(response.result.value!)
                     if let token = json["token"].string{
                         completion(token)
                     }
@@ -67,6 +66,8 @@ class API {
         Alamofire.request(.GET ,Endpoints.friends , headers:self.headers)
             .responseJSON {
                 response in
+                print(JSON(response.result.value!))
+
                 switch(response.result){
                 case .Success(_):
                     if let array = JSON(response.result.value!).array {

@@ -141,3 +141,8 @@ def reset_data():
     Challenge.objects.create(id=13, name="Church", category=buildings,tag="")
     Challenge.objects.create(id=14, name="Statue of Liberty", category=buildings,tag="")
     Challenge.objects.create(id=15, name="Eiffel tower", category=buildings,tag="")
+
+
+    vehicles = Category.objects.create(id=2, name="Vehicles", color="204,0,153")
+    Category.objects.create(id=3, name="Food", color="153,51,0")
+    Category.objects.create(id=4, name="Emotions", color="255,51,153")

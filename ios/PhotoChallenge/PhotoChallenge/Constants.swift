@@ -1,5 +1,5 @@
 class Endpoints {
-    static let root          = "http://c4b9a08e.ngrok.io/"
+    static let root          = "http://b01f5362.ngrok.io/"
     static let token         = Endpoints.root + "token/"
     static let categories    = Endpoints.root + "categories/"
     static let notifications = Endpoints.root + "notifications/"
