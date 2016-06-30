@@ -25,7 +25,7 @@ class FriendCell: UITableViewCell {
     
     func loadData(friend:Friend){
         txtName.text = friend.name
-        txtStar.text = String(friend.stars) + "★"
+        txtStar.text = String(friend.stars) //+ "★"
     }
     
 }

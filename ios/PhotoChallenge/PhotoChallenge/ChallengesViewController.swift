@@ -39,7 +39,6 @@ class ChallengesViewController: UIViewController ,UICollectionViewDelegate , UIC
         self.category = value
     }
     
-    
     override func viewDidLoad() {
         self.collectionView.registerNib(UINib(nibName: "ChallengeCell", bundle: nil), forCellWithReuseIdentifier: "ChallengeCell")
         
@@ -48,6 +47,14 @@ class ChallengesViewController: UIViewController ,UICollectionViewDelegate , UIC
         collectionView.dataSource = self
         categoryHeader.hidden = true
         self.navigationItem.title = category?.name
+        self.navigationController?.navigationBar.barTintColor = UIColor.whiteColor()
+        self.navigationController?.navigationBar.tintColor = category?.color
+        self.navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName : UIColor.blackColor()]
+        
+    }
+    
+    override func preferredStatusBarStyle() -> UIStatusBarStyle {
+        return .Default
     }
     
     override func viewDidAppear(animated: Bool) {
@@ -86,7 +93,7 @@ class ChallengesViewController: UIViewController ,UICollectionViewDelegate , UIC
     }
     
     func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
-        return CGSize(width: self.view.frame.width/2 - 10 , height: self.view.frame.width/2 - 10)
+        return CGSize(width: self.view.frame.width/2 - 10 , height: self.view.frame.width/2 - 10 + 47)
     }
     
     func scrollViewDidScroll(scrollView: UIScrollView) {
@@ -116,8 +123,16 @@ class ChallengesViewController: UIViewController ,UICollectionViewDelegate , UIC
     func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
         selectedChallenge = challenges[sections[indexPath.section]]![indexPath.row]
         fromCellFrame = collectionView.convertRect((collectionView.layoutAttributesForItemAtIndexPath(indexPath)?.frame)! , toView: self.view)
+        fromCellFrame = CGRect(x: fromCellFrame.origin.x + 7 , y: fromCellFrame.origin.y + 7, width: fromCellFrame.width - 7, height: fromCellFrame.height - 7 - 47)
         lastCell = collectionView.cellForItemAtIndexPath(indexPath)
-        lastCell?.hidden = true
+        
+        UIView.animateWithDuration(1, animations: {
+            self.lastCell?.alpha = 0
+            },completion: { _ in
+                self.lastCell?.hidden = true
+                self.lastCell?.alpha = 1
+        })
+        
         self.performSegueWithIdentifier("toDetail", sender: self)
     }
     

@@ -2,15 +2,15 @@ import UIKit
 import DynamicColor
 class CategoryCell: UICollectionViewCell {
     
-    @IBOutlet weak var stack1: UIStackView!
     
-    
-    @IBOutlet weak var stack2: UIStackView!
+    @IBOutlet weak var currentStars: UILabel!
+    @IBOutlet weak var maxStars: UILabel!
     
     @IBOutlet weak var btnOpen: UIButton!
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var coreView: UIView!
     @IBOutlet weak var txtName: UILabel!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
     }
@@ -30,7 +30,7 @@ class CategoryCell: UICollectionViewCell {
         imageView.image = UIImage(named: category.name.lowercaseString)
         imageView.image = imageView.image?.imageWithRenderingMode(.AlwaysTemplate)
         
-        txtName.text = category.name
+        txtName.text = category.name.uppercaseString
 //        txtName.layer.shadowColor = category.color.darkerColor().darkerColor().CGColor
 //        txtName.layer.shadowOpacity = 1
 //        txtName.layer.shadowOffset = CGSize(width: 0, height: 0)
@@ -47,25 +47,11 @@ class CategoryCell: UICollectionViewCell {
         btnOpen.titleLabel?.textColor = category.color.darkerColor()
         btnOpen.setTitleColor(category.color.darkerColor(), forState: .Normal)
         btnOpen.setTitleColor(category.color.lighterColor(), forState: .Highlighted)
-        
-        let starOn = UIImage(named: "star-on")?.imageWithRenderingMode(.AlwaysTemplate)
-        let starOff = UIImage(named: "star-off")
-        
-        let stack1stars = category.stars > 5 ? 5 : category.stars
-        let stack2stars = category.stars > 5 ? category.stars - 5  : 0
-        
-        stack1.subviews.forEach({ ($0 as! UIImageView).image = starOff; $0.tintColor = category.color.lighterColor()})
-        stack2.subviews.forEach({ ($0 as! UIImageView).image = starOff; $0.tintColor = category.color.lighterColor()})
-        
-        for i in 0..<stack1stars{
-            (stack1.subviews[i] as! UIImageView).image = starOn
-        }
-        
-        for i in 0..<stack2stars{
-            (stack2.subviews[i] as! UIImageView).image = starOn
-        }
-        
+                
         btnOpen.addTarget(self, action: #selector(explore), forControlEvents: .TouchUpInside)
+        
+        currentStars.text = "" + String(category.stars) + " "
+        maxStars.text = " 20 "
     }
     
     func explore(){

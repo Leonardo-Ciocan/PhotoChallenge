@@ -118,6 +118,19 @@ class NotificationView(APIView):
                 } for s in Notification.objects.filter(user=request.user)]
         return HttpResponse(json.dumps(subs), status=200)
 
+class MeView(APIView):
+    authentication_classes = (TokenAuthentication,)
+    permission_classes = (IsAuthenticated,)
+
+    def get(self, request):
+        payload = {
+            "username": request.user.username,
+            "stars": Submission.objects.filter(user=request.user).count(),
+            "followers": Friendship.objects.filter(toUser=request.user).count()
+        }
+        return HttpResponse(json.dumps(payload), status=200)
+
+
 def reset_data():
     Category.objects.all().delete()
     Challenge.objects.all().delete()
@@ -143,6 +156,6 @@ def reset_data():
     Challenge.objects.create(id=15, name="Eiffel tower", category=buildings,tag="")
 
 
-    vehicles = Category.objects.create(id=2, name="Vehicles", color="204,0,153")
-    Category.objects.create(id=3, name="Food", color="153,51,0")
+    vehicles = Category.objects.create(id=2, name="Vehicles", color="0,2,94")
+    Category.objects.create(id=3, name="Food", color="255,89,0")
     Category.objects.create(id=4, name="Emotions", color="255,51,153")

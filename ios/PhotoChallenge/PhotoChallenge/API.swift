@@ -101,6 +101,23 @@ class API {
         }
     }
     
+    static func getUserInfo(success: ((String,String,String) -> ())? , error : ((NSError) -> ())?) {
+        Alamofire.request(.GET ,Endpoints.me , headers:self.headers)
+            .validate()
+            .responseJSON {
+                response in
+                switch(response.result){
+                case .Success(_):
+                    let json = JSON(response.result.value!)
+                    success!(json["username"].string! , String(json["stars"].int!) , String(json["followers"].int!))
+                case .Failure(let _error):
+                    if let error = error {
+                        error(_error)
+                    }
+                }
+        }
+    }
+    
     static func addFriend(username : String  ,success: ((Friend) -> ())? , error : ((NSError) -> ())? ) {
         Alamofire.request(.POST , Endpoints.friends ,
                           headers:self.headers,
@@ -153,5 +170,7 @@ class API {
             }
         )
     }
+    
+    
     
 }

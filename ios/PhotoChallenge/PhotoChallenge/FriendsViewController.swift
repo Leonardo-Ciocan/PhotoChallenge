@@ -19,21 +19,27 @@ class FriendsViewController: UIViewController , UITableViewDelegate , UITableVie
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        
 
-        addView.backgroundColor = UIColor(red: 0/255, green: 127/255, blue: 219/255, alpha: 1.0)
-        self.navigationController?.navigationBar.barTintColor = UIColor(red: 0/255, green: 127/255, blue: 219/255, alpha: 1.0)
-        self.navigationController?.navigationBar.tintColor = UIColor.whiteColor()
-        self.navigationItem.title = "Friends"
+        //addView.backgroundColor = UIColor(red: 0/255, green: 127/255, blue: 219/255, alpha: 1.0)
+        self.navigationController?.navigationBar.barTintColor = UIColor.whiteColor()
+        self.navigationController?.navigationBar.tintColor = Constants.appColor
+        self.navigationController?.navigationBar.barStyle = .Default
+        self.navigationItem.title = "Following"
         self.navigationController?.navigationBar.translucent = false
         
-        addTextBox.backgroundColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.2)
+        addTextBox.backgroundColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.04)
         addTextBox.opaque = false
         addTextBox.layer.cornerRadius = 5
         addTextBox.layer.masksToBounds = true
         
         if let placeholder = addTextBox.placeholder {
-            addTextBox.attributedPlaceholder = NSAttributedString(string:placeholder, attributes: [NSForegroundColorAttributeName: UIColor(red:1,green:1,blue:1,alpha:0.5)])
+            addTextBox.attributedPlaceholder = NSAttributedString(string:placeholder, attributes: [NSForegroundColorAttributeName: UIColor(red:0,green:0,blue:0,alpha:0.5)])
         }
+        self.navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName : UIColor.blackColor()]
+
+        
         
         self.navigationController?.navigationBar.shadowImage = UIImage()
         self.navigationController?.navigationBar.setBackgroundImage(UIImage(), forBarMetrics: .Default)
@@ -42,7 +48,7 @@ class FriendsViewController: UIViewController , UITableViewDelegate , UITableVie
         tableView.delegate = self
         tableView.dataSource = self
         
-        tableView.rowHeight = 65
+        tableView.rowHeight = 75
         
         API.getFriends({ friends in
             self.friends = friends
@@ -82,8 +88,5 @@ class FriendsViewController: UIViewController , UITableViewDelegate , UITableVie
         addFriend()
     }
     
-    override func preferredStatusBarStyle() -> UIStatusBarStyle {
-        return .LightContent
-    }
     
 }

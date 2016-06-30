@@ -27,16 +27,16 @@ class ChallengeDetailViewController: UIViewController , UIImagePickerControllerD
     @IBOutlet weak var friendButton: UIView!
     @IBOutlet weak var btnShoot: UIView!
 
+    @IBOutlet weak var backView: UIView!
     @IBOutlet weak var imgCamera: UIImageView!
     
-    @IBOutlet weak var blur: UIVisualEffectView!
     
+    @IBOutlet weak var imgHeader: UIImageView!
     @IBOutlet weak var stackview: UIStackView!
     @IBOutlet weak var btnDelete: UIView!
     
     @IBOutlet weak var topMargin: NSLayoutConstraint!
     @IBOutlet weak var lblTakePicture: UILabel!
-    @IBOutlet weak var imgHeader: UIImageView!
     
     var fromCellFrame : CGRect = CGRectZero
     
@@ -54,17 +54,16 @@ class ChallengeDetailViewController: UIViewController , UIImagePickerControllerD
         //btnShoot.layer.masksToBounds = true
         //btnShoot.backgroundColor = category?.color
         
-        blur.backgroundColor = UIColor.blackColor().adjustedAlphaColor(-0.65)
-        blur.alpha = 0.9
+        backView.alpha = 0.9
         
         self.navigationItem.title = challenge?.name
         
-        shadowView.layer.shadowColor = UIColor.blackColor().CGColor
-        shadowView.layer.shadowOffset = CGSize(width: 0, height: 1)
-        shadowView.layer.shadowRadius = 5
-        shadowView.layer.shadowOpacity = 0.25
-        shadowView.layer.masksToBounds = false
-        shadowView.clipsToBounds = false
+//        shadowView.layer.shadowColor = UIColor.blackColor().CGColor
+//        shadowView.layer.shadowOffset = CGSize(width: 0, height: 1)
+//        shadowView.layer.shadowRadius = 5
+        //shadowView.layer.shadowOpacity = 0.25
+        //shadowView.layer.masksToBounds = false
+        //shadowView.clipsToBounds = false
         
         if challenge!.hasSubmission && challenge!.submissionImage != nil {
                 imgHeader.image = challenge?.submissionImage!
@@ -72,10 +71,13 @@ class ChallengeDetailViewController: UIViewController , UIImagePickerControllerD
         }
         else{
             imgHeader.image = UIImage(named:"star-missing")?.imageWithRenderingMode(.AlwaysTemplate)
+            placeholder.image = UIImage(named:"star-missing")?.imageWithRenderingMode(.AlwaysTemplate)
+            imgHeader.tintColor = UIColor.grayColor()
+            placeholder.tintColor = UIColor.grayColor()
         }
         
         
-        imgHeader.tintColor = category?.color
+        //imgHeader.tintColor = category?.color
         
         
         
@@ -123,34 +125,56 @@ class ChallengeDetailViewController: UIViewController , UIImagePickerControllerD
         //topMargin.constant = self.view.frame.height + 10
        
         
+        //placeholder.image = placeholder.image?.imageWithRenderingMode(.AlwaysTemplate)
+        //placeholder.tintColor = category?.color.darkerColor()
+        
+        placeholder.layer.shadowColor = UIColor.blackColor().CGColor
+        placeholder.layer.shadowOpacity = 0.05
+        placeholder.layer.shadowOffset = CGSize(width: 0, height: 0)
+        placeholder.layer.shadowRadius = 4
+        self.imgHeader.layer.shadowColor = UIColor.blackColor().CGColor
+        self.imgHeader.layer.shadowOffset = CGSizeZero
+        self.imgHeader.layer.shadowRadius = 15
+        self.imgHeader.layer.shadowOpacity = 0.4
         imgHeader.alpha = 0
         btnShoot.alpha = 0
         btnDelete.alpha = 0
         friendButton.alpha = 0
+        view.hidden = true
+        
     }
     
     override func viewDidAppear(animated: Bool) {
+
         
-        print(fromCellFrame.origin.y)
         currentFrame = imgHeader.frame
         placeholder.frame = self.fromCellFrame
-        
+        backView.alpha = 0
+        self.placeholder.layer.shadowColor = UIColor.blackColor().CGColor
+        self.placeholder.layer.shadowOffset = CGSizeZero
+        self.placeholder.layer.shadowRadius = 15
+        self.placeholder.layer.shadowOpacity = 0.4
+        view.hidden = false
         UIView.setAnimationCurve(.EaseOut)
-        UIView.animateWithDuration(0.5, animations: {
+        UIView.animateWithDuration(0.95, animations: {
+            self.backView.alpha = 1
             self.placeholder.frame = self.currentFrame
             }, completion: { _ in
                 self.placeholder.hidden = true
                 self.imgHeader.alpha = 1
+                
+                
+                
                 UIView.animateWithDuration(0.25, animations: {
                     self.btnShoot.alpha = 1
                     self.btnDelete.alpha = 1
                     self.friendButton.alpha = 1
+                    
                     }, completion: nil)
         })
     }
     
     func panDown(sender:UIPanGestureRecognizer){
-        
         if sender.state == UIGestureRecognizerState.Ended {
             if topMargin.constant >= 50 + 150 {
                 
@@ -162,7 +186,7 @@ class ChallengeDetailViewController: UIViewController , UIImagePickerControllerD
                 self.placeholder.hidden = false
                 UIView.animateWithDuration(0.5, animations: {
                         self.placeholder.frame = self.fromCellFrame
-                        self.blur.alpha = 0
+                        self.backView.alpha = 0
                     }, completion: { _ in
                         self.dismissViewControllerAnimated(false, completion: {
                             self.lastCell?.hidden = false
@@ -173,7 +197,7 @@ class ChallengeDetailViewController: UIViewController , UIImagePickerControllerD
             topMargin.constant = 50
             UIView.animateWithDuration(0.5, animations: {
                 self.view.layoutIfNeeded()
-                self.blur.alpha = 1
+                self.backView.alpha = 1
             })
             }
             return
@@ -187,13 +211,13 @@ class ChallengeDetailViewController: UIViewController , UIImagePickerControllerD
         let downwardMovementPercent = fminf(downwardMovement, 1.0)
         let progress = CGFloat(downwardMovementPercent)
         
-        topMargin.constant = 50 + progress * 600
-        blur.alpha = 0.9 - progress * 0.5
+        topMargin.constant = 50 + translation.y
+        backView.alpha = 0.9 - progress * 0.5
     }
     
     override func viewDidLayoutSubviews() {
-        btnDelete.roundCorners([.BottomLeft,.BottomRight], radius: 10)
-        imgHeader.roundCorners([.TopLeft , .TopRight], radius: 10)
+        //btnDelete.roundCorners([.BottomLeft,.BottomRight], radius: 10)
+        //imgHeader.roundCorners([.TopLeft , .TopRight], radius: 10)
     }
     
     func edit(sender: UITapGestureRecognizer) {
@@ -250,6 +274,7 @@ class ChallengeDetailViewController: UIViewController , UIImagePickerControllerD
         API.submitSubmission(UIImageJPEGRepresentation(resizeImage(img, newHeight: 500), 100)!, challengeID: (challenge?.id)!, success: nil, error: nil)
         challenge?.hasSubmission = true
         challenge?.submissionImage = img
+        placeholder.image = img
     }
     
     func resizeImage(image: UIImage, newHeight: CGFloat) -> UIImage {

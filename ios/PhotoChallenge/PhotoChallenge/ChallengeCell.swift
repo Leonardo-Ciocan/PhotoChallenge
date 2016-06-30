@@ -19,15 +19,18 @@ class ChallengeCell: UICollectionViewCell {
         
         //txtName.textColor = category.color
         
-        imgStar.tintColor = UIColor(red: 0, green: 0, blue: 0, alpha: 100)
-        imgStar.alpha = 0.075
+        imgStar.tintColor = UIColor.grayColor()
         
-        innerView.backgroundColor = category.color
+        innerView.backgroundColor = UIColor.whiteColor()
+        txtName.textColor  = UIColor.blackColor()
         
         innerView.layer.shadowColor = UIColor.blackColor().CGColor
-        innerView.layer.shadowOpacity = 0.1
+        innerView.layer.shadowOpacity = 0.05
         innerView.layer.shadowOffset = CGSize(width: 0, height: 0)
-        innerView.layer.shadowRadius = 3
+        innerView.layer.shadowRadius = 4
+        
+        self.innerView.layer.borderWidth = 1
+        self.innerView.layer.borderColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.1).CGColor
         
         //innerView.layer.cornerRadius = innerView.frame.width / 4
         //innerView.layer.masksToBounds = true

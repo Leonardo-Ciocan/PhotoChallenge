@@ -9,6 +9,7 @@
 import UIKit
 import DynamicColor
 
+
 class CategoriesViewController: UIViewController , UICollectionViewDelegate , UICollectionViewDataSource , UICollectionViewDelegateFlowLayout {
     
     override func preferredStatusBarStyle() -> UIStatusBarStyle {
@@ -42,6 +43,12 @@ class CategoriesViewController: UIViewController , UICollectionViewDelegate , UI
         lastColor = categories[0].color
         collectionView.allowsSelection = false
         
+        (collectionView.collectionViewLayout as! UICollectionViewFlowLayout).minimumInteritemSpacing = 0
+        (collectionView.collectionViewLayout as! UICollectionViewFlowLayout).itemSize = UIScreen.mainScreen().bounds.size
+    }
+    
+    override func viewDidAppear(animated: Bool) {
+        self.collectionView.backgroundColor = categories[0].color
     }
     
     func numberOfSectionsInCollectionView(collectionView: UICollectionView) -> Int {
@@ -77,11 +84,16 @@ class CategoriesViewController: UIViewController , UICollectionViewDelegate , UI
         }
     }
     
-    func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
-        return CGSize(width: self.view.frame.width + 5, height: self.view.frame.height)
+    override func willRotateToInterfaceOrientation(toInterfaceOrientation: UIInterfaceOrientation, duration: NSTimeInterval) {
+        collectionView.collectionViewLayout.invalidateLayout()
     }
     
-    func scrollViewDidEndDecelerating(scrollView: UIScrollView) {
+    func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
+        
+        return self.collectionView.frame.size
+    }
+    
+    func xxscrollViewDidEndDecelerating(scrollView: UIScrollView) {
         let pos = Int(floor(collectionView.contentOffset.x / (collectionView.contentSize.width-collectionView.frame.width) * CGFloat(categories.count-1)))
         //print("\(scrollView.contentOffset.x) out of \(scrollView.contentSize.width-collectionView.frame.width)")
         //let pos = collectionView.indexPathsForVisibleItems().sort({ $0.row > $1.row}).first
@@ -105,9 +117,12 @@ class CategoriesViewController: UIViewController , UICollectionViewDelegate , UI
     
     
     func scrollViewDidScroll(scrollView: UIScrollView) {
-            let percentage = collectionView.contentOffset.x / (collectionView.contentSize.width-collectionView.frame.width)
+            //let percentage = collectionView.contentOffset.x / (collectionView.contentSize.width-collectionView.frame.width)
             let pos = Int(floor((collectionView.contentOffset.x / self.view.frame.width)))
-            if(pos == categories.count-1){ return }
+            if pos == categories.count-1
+            {
+                return
+            }
             //print("\(pos)-\(pos+1)")
             let c = categories[pos+1]
             let col = self.fadeFromColor(categories[pos].color, toColor: c.color, withPercentage: (collectionView.contentOffset.x % self.view.frame.width) / (self.view.frame.width))
@@ -116,7 +131,6 @@ class CategoriesViewController: UIViewController , UICollectionViewDelegate , UI
             self.navigationController?.navigationBar.barTintColor = col
             self.tabBarController?.tabBar.tintColor = col
             self.collectionView.backgroundColor = col
-        
     }
     
     func fadeFromColor(fromColor: UIColor, toColor: UIColor, withPercentage: CGFloat) -> UIColor {
@@ -136,10 +150,10 @@ class CategoriesViewController: UIViewController , UICollectionViewDelegate , UI
         toColor.getRed(&toRed, green: &toGreen, blue: &toBlue, alpha: &toAlpha)
         
         //calculate the actual RGBA values of the fade colour
-        var red = (toRed - fromRed) * withPercentage + fromRed;
-        var green = (toGreen - fromGreen) * withPercentage + fromGreen;
-        var blue = (toBlue - fromBlue) * withPercentage + fromBlue;
-        var alpha = (toAlpha - fromAlpha) * withPercentage + fromAlpha;
+        let red = (toRed - fromRed) * withPercentage + fromRed;
+        let green = (toGreen - fromGreen) * withPercentage + fromGreen;
+        let blue = (toBlue - fromBlue) * withPercentage + fromBlue;
+        let alpha = (toAlpha - fromAlpha) * withPercentage + fromAlpha;
         
         // return the fade colour
         return UIColor(red: red, green: green, blue: blue, alpha: alpha)

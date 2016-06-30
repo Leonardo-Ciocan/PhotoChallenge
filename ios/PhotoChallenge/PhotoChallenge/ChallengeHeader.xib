@@ -21,7 +21,7 @@
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="m1G-nr-HZO">
                     <rect key="frame" x="8" y="289" width="42" height="21"/>
                     <fontDescription key="fontDescription" type="system" weight="thin" pointSize="22"/>
-                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="star-on" translatesAutoresizingMaskIntoConstraints="NO" id="0hU-0G-ufr">
@@ -34,7 +34,7 @@
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="15" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5wE-VE-W5o">
                     <rect key="frame" x="494" y="294" width="18" height="21"/>
                     <fontDescription key="fontDescription" type="system" weight="thin" pointSize="22"/>
-                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
             </subviews>
@@ -45,8 +45,14 @@
                 <constraint firstItem="m1G-nr-HZO" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="20" id="MU4-ck-dAw"/>
                 <constraint firstItem="5wE-VE-W5o" firstAttribute="centerY" secondItem="0hU-0G-ufr" secondAttribute="centerY" id="Txk-Mh-HNh"/>
                 <constraint firstItem="0hU-0G-ufr" firstAttribute="leading" secondItem="5wE-VE-W5o" secondAttribute="trailing" constant="5" id="enw-eY-mJi"/>
+                <constraint firstItem="m1G-nr-HZO" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="fuR-Bl-xW0"/>
                 <constraint firstItem="m1G-nr-HZO" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="vdV-ux-0S7"/>
             </constraints>
+            <variation key="default">
+                <mask key="constraints">
+                    <exclude reference="MU4-ck-dAw"/>
+                </mask>
+            </variation>
             <point key="canvasLocation" x="336" y="519"/>
         </view>
     </objects>
