@@ -21,6 +21,11 @@
 		B310EF051D0EEE1B009FAC4B /* FollowNotificationCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B310EF031D0EEE1B009FAC4B /* FollowNotificationCell.xib */; };
 		B31E6B2A1D17D36D007EC451 /* WelcomeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B31E6B281D17D36D007EC451 /* WelcomeCell.swift */; };
 		B31E6B2B1D17D36D007EC451 /* WelcomeCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B31E6B291D17D36D007EC451 /* WelcomeCell.xib */; };
+		B367BA961D26C8D2000E902A /* NotificationCenter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B367BA951D26C8D2000E902A /* NotificationCenter.framework */; };
+		B367BA991D26C8D2000E902A /* TodayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B367BA981D26C8D2000E902A /* TodayViewController.swift */; };
+		B367BA9C1D26C8D2000E902A /* MainInterface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B367BA9A1D26C8D2000E902A /* MainInterface.storyboard */; };
+		B367BAA01D26C8D2000E902A /* AppWidget.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = B367BA941D26C8D2000E902A /* AppWidget.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		B367BAA51D26CCE5000E902A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B3F214CF1D09789D00C3D8E9 /* Assets.xcassets */; };
 		B38EF1461D0D167B0079B62B /* Submission.swift in Sources */ = {isa = PBXBuildFile; fileRef = B38EF1451D0D167B0079B62B /* Submission.swift */; };
 		B38EF1481D0D20500079B62B /* MainTabController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B38EF1471D0D20500079B62B /* MainTabController.swift */; };
 		B38EF14A1D0D2DD00079B62B /* ChallengeHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = B38EF1491D0D2DD00079B62B /* ChallengeHeader.swift */; };
@@ -45,6 +50,30 @@
 		D9B33846B653BD0EE3937F33 /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0DA08864CFE02BBC2009E6F0 /* Pods.framework */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		B367BA9E1D26C8D2000E902A /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = B3F214BB1D09789D00C3D8E9 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = B367BA931D26C8D2000E902A;
+			remoteInfo = AppWidget;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		B367BAA41D26C8D2000E902A /* Embed App Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				B367BAA01D26C8D2000E902A /* AppWidget.appex in Embed App Extensions */,
+			);
+			name = "Embed App Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
 		086FEBCC07AC36E6D9DD86F0 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		0DA08864CFE02BBC2009E6F0 /* Pods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -63,6 +92,11 @@
 		B310EF031D0EEE1B009FAC4B /* FollowNotificationCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FollowNotificationCell.xib; sourceTree = "<group>"; };
 		B31E6B281D17D36D007EC451 /* WelcomeCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WelcomeCell.swift; sourceTree = "<group>"; };
 		B31E6B291D17D36D007EC451 /* WelcomeCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WelcomeCell.xib; sourceTree = "<group>"; };
+		B367BA941D26C8D2000E902A /* AppWidget.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = AppWidget.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		B367BA951D26C8D2000E902A /* NotificationCenter.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NotificationCenter.framework; path = System/Library/Frameworks/NotificationCenter.framework; sourceTree = SDKROOT; };
+		B367BA981D26C8D2000E902A /* TodayViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayViewController.swift; sourceTree = "<group>"; };
+		B367BA9B1D26C8D2000E902A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/MainInterface.storyboard; sourceTree = "<group>"; };
+		B367BA9D1D26C8D2000E902A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B38EF1451D0D167B0079B62B /* Submission.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Submission.swift; sourceTree = "<group>"; };
 		B38EF1471D0D20500079B62B /* MainTabController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainTabController.swift; sourceTree = "<group>"; };
 		B38EF1491D0D2DD00079B62B /* ChallengeHeader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChallengeHeader.swift; sourceTree = "<group>"; };
@@ -89,6 +123,14 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		B367BA911D26C8D2000E902A /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B367BA961D26C8D2000E902A /* NotificationCenter.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		B3F214C01D09789D00C3D8E9 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -113,8 +155,19 @@
 			isa = PBXGroup;
 			children = (
 				0DA08864CFE02BBC2009E6F0 /* Pods.framework */,
+				B367BA951D26C8D2000E902A /* NotificationCenter.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		B367BA971D26C8D2000E902A /* AppWidget */ = {
+			isa = PBXGroup;
+			children = (
+				B367BA981D26C8D2000E902A /* TodayViewController.swift */,
+				B367BA9A1D26C8D2000E902A /* MainInterface.storyboard */,
+				B367BA9D1D26C8D2000E902A /* Info.plist */,
+			);
+			path = AppWidget;
 			sourceTree = "<group>";
 		};
 		B3F214BA1D09789D00C3D8E9 = {
@@ -122,6 +175,7 @@
 			children = (
 				B3F214DA1D0978AD00C3D8E9 /* Podfile */,
 				B3F214C51D09789D00C3D8E9 /* PhotoChallenge */,
+				B367BA971D26C8D2000E902A /* AppWidget */,
 				B3F214C41D09789D00C3D8E9 /* Products */,
 				2E17BB390A3962AC6C9EA97D /* Pods */,
 				7D3712112EF1A66CA7F930D2 /* Frameworks */,
@@ -132,6 +186,7 @@
 			isa = PBXGroup;
 			children = (
 				B3F214C31D09789D00C3D8E9 /* PhotoChallenge.app */,
+				B367BA941D26C8D2000E902A /* AppWidget.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -189,6 +244,23 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		B367BA931D26C8D2000E902A /* AppWidget */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = B367BAA31D26C8D2000E902A /* Build configuration list for PBXNativeTarget "AppWidget" */;
+			buildPhases = (
+				B367BA901D26C8D2000E902A /* Sources */,
+				B367BA911D26C8D2000E902A /* Frameworks */,
+				B367BA921D26C8D2000E902A /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = AppWidget;
+			productName = AppWidget;
+			productReference = B367BA941D26C8D2000E902A /* AppWidget.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
 		B3F214C21D09789D00C3D8E9 /* PhotoChallenge */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = B3F214D71D09789D00C3D8E9 /* Build configuration list for PBXNativeTarget "PhotoChallenge" */;
@@ -199,10 +271,12 @@
 				B3F214C11D09789D00C3D8E9 /* Resources */,
 				1046CCD516DDCF9E88570B79 /* Embed Pods Frameworks */,
 				7A31A2C3DF2FE4EE26932DA2 /* Copy Pods Resources */,
+				B367BAA41D26C8D2000E902A /* Embed App Extensions */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				B367BA9F1D26C8D2000E902A /* PBXTargetDependency */,
 			);
 			name = PhotoChallenge;
 			productName = PhotoChallenge;
@@ -219,6 +293,10 @@
 				LastUpgradeCheck = 0730;
 				ORGANIZATIONNAME = lc;
 				TargetAttributes = {
+					B367BA931D26C8D2000E902A = {
+						CreatedOnToolsVersion = 7.3;
+						DevelopmentTeam = 4FLSWMW6LR;
+					};
 					B3F214C21D09789D00C3D8E9 = {
 						CreatedOnToolsVersion = 7.3;
 						DevelopmentTeam = 4FLSWMW6LR;
@@ -239,11 +317,21 @@
 			projectRoot = "";
 			targets = (
 				B3F214C21D09789D00C3D8E9 /* PhotoChallenge */,
+				B367BA931D26C8D2000E902A /* AppWidget */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		B367BA921D26C8D2000E902A /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B367BAA51D26CCE5000E902A /* Assets.xcassets in Resources */,
+				B367BA9C1D26C8D2000E902A /* MainInterface.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		B3F214C11D09789D00C3D8E9 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -314,6 +402,14 @@
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		B367BA901D26C8D2000E902A /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B367BA991D26C8D2000E902A /* TodayViewController.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		B3F214BF1D09789D00C3D8E9 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -346,7 +442,23 @@
 		};
 /* End PBXSourcesBuildPhase section */
 
+/* Begin PBXTargetDependency section */
+		B367BA9F1D26C8D2000E902A /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = B367BA931D26C8D2000E902A /* AppWidget */;
+			targetProxy = B367BA9E1D26C8D2000E902A /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
 /* Begin PBXVariantGroup section */
+		B367BA9A1D26C8D2000E902A /* MainInterface.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				B367BA9B1D26C8D2000E902A /* Base */,
+			);
+			name = MainInterface.storyboard;
+			sourceTree = "<group>";
+		};
 		B3F214CC1D09789D00C3D8E9 /* Main.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -366,6 +478,28 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		B367BAA11D26C8D2000E902A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				INFOPLIST_FILE = AppWidget/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = lc.PhotoChallenge.AppWidget;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+			};
+			name = Debug;
+		};
+		B367BAA21D26C8D2000E902A /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				INFOPLIST_FILE = AppWidget/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = lc.PhotoChallenge.AppWidget;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+			};
+			name = Release;
+		};
 		B3F214D51D09789D00C3D8E9 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -454,6 +588,7 @@
 			baseConfigurationReference = 086FEBCC07AC36E6D9DD86F0 /* Pods.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
 				INFOPLIST_FILE = PhotoChallenge/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = lc.PhotoChallenge;
@@ -467,6 +602,7 @@
 			baseConfigurationReference = 97F2DA0DA279C0B348A09BF8 /* Pods.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
 				INFOPLIST_FILE = PhotoChallenge/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = lc.PhotoChallenge;
@@ -478,6 +614,14 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		B367BAA31D26C8D2000E902A /* Build configuration list for PBXNativeTarget "AppWidget" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B367BAA11D26C8D2000E902A /* Debug */,
+				B367BAA21D26C8D2000E902A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
 		B3F214BE1D09789D00C3D8E9 /* Build configuration list for PBXProject "PhotoChallenge" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (

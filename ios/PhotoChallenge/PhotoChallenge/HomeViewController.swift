@@ -12,6 +12,7 @@ class HomeViewController: UIViewController , UITableViewDelegate , UITableViewDa
     
     var notifications : [Notification] = []
     
+    @IBOutlet weak var homeHeader: HomeHeader!
     @IBOutlet weak var tableView: UITableView!
     override func viewDidLoad() {
         self.navigationController?.navigationBar.barTintColor = UIColor.whiteColor() //UIColor(red: 0/255, green: 127/255, blue: 219/255, alpha: 1.0)
@@ -39,6 +40,15 @@ class HomeViewController: UIViewController , UITableViewDelegate , UITableViewDa
         API.getNotifications({ ns in
             self.notifications = ns;
             self.tableView.reloadData()}, error: nil)
+        let moreEvent = UITapGestureRecognizer(target: self , action: #selector(moreTouched))
+        homeHeader.btnMore.gestureRecognizers?.append(moreEvent)
+    }
+    
+    func moreTouched() {
+        let alert = UIAlertController(title: "More", message: "", preferredStyle: .Alert)
+        let logout = UIAlertAction(title: "Log out", style: .Destructive, handler: nil)
+        alert.addAction(logout)
+        self.presentViewController(alert, animated: true, completion: nil)
     }
     
     override func viewDidAppear(animated: Bool) {

@@ -4,6 +4,11 @@
 <dict>
 	<key>SchemeUserState</key>
 	<dict>
+		<key>AppWidget.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>8</integer>
+		</dict>
 		<key>PhotoChallenge.xcscheme</key>
 		<dict>
 			<key>orderHint</key>
@@ -12,6 +17,11 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
+		<key>B367BA931D26C8D2000E902A</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>B3F214C21D09789D00C3D8E9</key>
 		<dict>
 			<key>primary</key>

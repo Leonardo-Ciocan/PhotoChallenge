@@ -11,6 +11,7 @@ import UIKit
 class HomeHeader: UIView {
 
     
+    @IBOutlet weak var btnMore: UIImageView!
     @IBOutlet weak var txtFollowers: UILabel!
     @IBOutlet weak var txtUsername: UILabel!
     @IBOutlet weak var txtStars: UILabel!
@@ -37,11 +38,15 @@ class HomeHeader: UIView {
         txtStars.text = ""
         txtUsername.text = ""
         
+        btnMore.image = btnMore.image?.imageWithRenderingMode(.AlwaysTemplate)
+        btnMore.tintColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.25)
+        
         API.getUserInfo({ username , stars , followers in
                 self.txtStars.text = stars //+ "★"
                 self.txtUsername.text = username
                 self.txtFollowers.text = followers
             }, error: nil)
+        
     }
     
     func loadViewFromNib() -> UIView {

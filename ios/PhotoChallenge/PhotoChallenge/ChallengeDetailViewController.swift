@@ -24,8 +24,9 @@ class ChallengeDetailViewController: UIViewController , UIImagePickerControllerD
     var category : Category?
     var challenge : Challenge?
     
-    @IBOutlet weak var friendButton: UIView!
-    @IBOutlet weak var btnShoot: UIView!
+//    @IBOutlet weak var friendButton: UIView!
+//    @IBOutlet weak var btnShoot: UIView!
+//    @IBOutlet weak var btnDelete: UIView!
 
     @IBOutlet weak var backView: UIView!
     @IBOutlet weak var imgCamera: UIImageView!
@@ -33,7 +34,6 @@ class ChallengeDetailViewController: UIViewController , UIImagePickerControllerD
     
     @IBOutlet weak var imgHeader: UIImageView!
     @IBOutlet weak var stackview: UIStackView!
-    @IBOutlet weak var btnDelete: UIView!
     
     @IBOutlet weak var topMargin: NSLayoutConstraint!
     @IBOutlet weak var lblTakePicture: UILabel!
@@ -82,40 +82,22 @@ class ChallengeDetailViewController: UIViewController , UIImagePickerControllerD
         
         
         let tapped = UITapGestureRecognizer(target: self, action: #selector(edit(_:)))
-        btnShoot.addGestureRecognizer(tapped)
-        
-//        do {
-//        let maskPath = UIBezierPath(roundedRect: stackview.bounds, byRoundingCorners: [.BottomLeft, .BottomRight], cornerRadii: CGSizeMake(10, 10))
-//        let maskLayer = CAShapeLayer()
-//        maskLayer.frame = self.stackview.bounds
-//        maskLayer.path  = maskPath.CGPath
-//        stackview.layer.mask = maskLayer
-//        stackview.setNeedsDisplay()
-//        }
-//        
-//        do{
-//            let maskPath = UIBezierPath(roundedRect: self.imgHeader.bounds, byRoundingCorners: [.TopLeft, .TopRight], cornerRadii: CGSizeMake(10, 10))
-//            let maskLayer = CAShapeLayer()
-//            maskLayer.frame = self.imgHeader.bounds
-//            maskLayer.path  = maskPath.CGPath
-//            imgHeader.layer.mask = maskLayer
-//            imgHeader.setNeedsDisplay()
-//        }
+        //btnShoot.addGestureRecognizer(tapped)
         
     
-        
-        btnShoot.clipsToBounds = true
-        btnShoot.layer.masksToBounds = true
-        btnShoot.layer.borderWidth = 1
-        btnShoot.layer.borderColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.06).CGColor
-        
-        btnDelete.layer.borderWidth = 1
-        btnDelete.layer.borderColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.06).CGColor
-
-        
-        friendButton.layer.borderWidth = 1
-        friendButton.layer.borderColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.06).CGColor
-
+//        
+//        btnShoot.clipsToBounds = true
+//        btnShoot.layer.masksToBounds = true
+//        btnShoot.layer.borderWidth = 1
+//        btnShoot.layer.borderColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.06).CGColor
+//        
+//        btnDelete.layer.borderWidth = 1
+//        btnDelete.layer.borderColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.06).CGColor
+//
+//        
+//        friendButton.layer.borderWidth = 1
+//        friendButton.layer.borderColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.06).CGColor
+//
         
         self.modalPresentationStyle = UIModalPresentationStyle.OverCurrentContext
         
@@ -137,11 +119,14 @@ class ChallengeDetailViewController: UIViewController , UIImagePickerControllerD
         self.imgHeader.layer.shadowRadius = 15
         self.imgHeader.layer.shadowOpacity = 0.4
         imgHeader.alpha = 0
-        btnShoot.alpha = 0
-        btnDelete.alpha = 0
-        friendButton.alpha = 0
+//        btnShoot.alpha = 0
+//        btnDelete.alpha = 0
+//        friendButton.alpha = 0
         view.hidden = true
         
+        self.imgHeader.layer.cornerRadius = 10
+        //self.imgHeader.layer.masksToBounds = true
+        //self.placeholder.layer.masksToBounds = true
     }
     
     override func viewDidAppear(animated: Bool) {
@@ -159,6 +144,7 @@ class ChallengeDetailViewController: UIViewController , UIImagePickerControllerD
         UIView.animateWithDuration(0.95, animations: {
             self.backView.alpha = 1
             self.placeholder.frame = self.currentFrame
+            self.placeholder.layer.cornerRadius = 10
             }, completion: { _ in
                 self.placeholder.hidden = true
                 self.imgHeader.alpha = 1
@@ -166,9 +152,9 @@ class ChallengeDetailViewController: UIViewController , UIImagePickerControllerD
                 
                 
                 UIView.animateWithDuration(0.25, animations: {
-                    self.btnShoot.alpha = 1
-                    self.btnDelete.alpha = 1
-                    self.friendButton.alpha = 1
+//                    self.btnShoot.alpha = 1
+//                    self.btnDelete.alpha = 1
+//                    self.friendButton.alpha = 1
                     
                     }, completion: nil)
         })
@@ -179,9 +165,9 @@ class ChallengeDetailViewController: UIViewController , UIImagePickerControllerD
             if topMargin.constant >= 50 + 150 {
                 
                 imgHeader.alpha = 0
-                btnShoot.alpha = 0
-                btnDelete.alpha = 0
-                friendButton.alpha = 0
+//                btnShoot.alpha = 0
+//                btnDelete.alpha = 0
+//                friendButton.alpha = 0
                 placeholder.frame = imgHeader.frame
                 self.placeholder.hidden = false
                 UIView.animateWithDuration(0.5, animations: {
